@@ -1,0 +1,402 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway:400,700');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;    
+    font-family: Raleway, sans-serif;
+}
+
+body {
+    background: linear-gradient(90deg, #90d4ff, #0d9adc); /* พื้นหลังแบบไล่เฉดสี */
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.screen {
+    background: linear-gradient(90deg, #8deaf8, #1746b3);    
+    position: relative;    
+    height: 600px;
+    width: 360px;    
+    box-shadow: 0px 0px 24px #245382;
+    border-radius: 15px;
+}
+
+.screen__content {
+    z-index: 1;
+    position: relative;    
+    height: 100%;
+}
+
+.screen__background {        
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 0;
+    -webkit-clip-path: inset(0 0 0 0);
+    clip-path: inset(0 0 0 0);    
+}
+
+.screen__background__shape {
+    transform: rotate(45deg);
+    position: absolute;
+}
+
+.screen__background__shape1 {
+    height: 520px;
+    width: 520px;
+    background: #FFF;    
+    top: -50px;
+    right: 120px;    
+    border-radius: 0 72px 0 0;
+}
+
+.screen__background__shape2 {
+    height: 220px;
+    width: 220px;
+    background: #343cac;    
+    top: -172px;
+    right: 0;    
+    border-radius: 32px;
+}
+
+.screen__background__shape3 {
+    height: 540px;
+    width: 190px;
+    background: linear-gradient(270deg, #22508f, #60a0d3);
+    top: -24px;
+    right: 0;    
+    border-radius: 32px;
+}
+
+.screen__background__shape4 {
+    height: 400px;
+    width: 200px;
+    background: #22508f;    
+    top: 420px;
+    right: 50px;    
+    border-radius: 60px;
+}
+
+.login {
+    width: 320px;
+    padding: 30px;
+    padding-top: 156px;
+}
+
+.login__field {
+    padding: 20px 0px;    
+    position: relative;    
+}
+
+.login__icon {
+    position: absolute;
+    top: 30px;
+    color: #60a0d3;
+}
+
+.login__input {
+    border: none;
+    border-bottom: 2px solid #D1D1D4;
+    background: none;
+    padding: 10px;
+    padding-left: 24px;
+    font-weight: 700;
+    width: 75%;
+    transition: .2s;
+}
+
+.login__input:active,
+.login__input:focus,
+.login__input:hover {
+    outline: none;
+    border-bottom-color: #4879c2;
+}
+
+.login__submit {
+    background: #fff;
+    font-size: 14px;
+    margin-top: 30px;
+    padding: 16px 20px;
+    border-radius: 26px;
+    border: 1px solid #D4D3E8;
+    text-transform: uppercase;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    color: #479bd6;
+    box-shadow: 0px 2px 2px #4388ce;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.login__submit:active,
+.login__submit:focus,
+.login__submit:hover {
+    border-color: #479bd6;
+    outline: none;
+}
+
+.button__icon {
+    font-size: 24px;
+    margin-left: auto;
+    color: #479bd6;
+}
+
+/** Home Page **/
+.header-nav {
+    display: flex;
+    justify-content: flex-start;
+    background-color: #1E90FF;
+    padding: 10px 20px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.nav-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    padding: 10px 15px;
+    transition: background-color 0.3s;
+}
+
+.nav-btn:hover {
+    background-color: #4682B4;
+}
+
+.home-btn {
+    font-weight: bold; /* ทำให้คำว่า Home ตัวหนา */
+}
+
+.logout-btn {
+    background-color: #FF6347; /* สีปุ่ม Logout */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    position: absolute; /* ปุ่ม Log Out อยู่ที่ขวาบน */
+    top: 10px;
+    right: 20px;
+}
+
+.logout-btn:hover {
+    background-color: #FF4500;
+}
+
+.home-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(90deg, #90d4ff, #0d9adc);
+    margin-top: 60px;
+}
+
+.home-content {
+    text-align: center;
+    padding: 40px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 20px;
+    box-shadow: 0px 0px 24px rgba(0, 0, 0, 0.2);
+    width: 80%;
+    max-width: 900px;
+}
+
+.home-content h1 {
+    font-size: 36px;
+    color: #1E90FF;
+    margin-bottom: 20px;
+}
+
+.home-content p {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+/** Patient Type Page **/
+.patient-types-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(90deg, #90d4ff, #0d9adc);
+    margin-top: 60px;
+}
+
+.patient-types-content {
+    text-align: center;
+    padding: 40px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 20px;
+    box-shadow: 0px 0px 24px rgba(0, 0, 0, 0.2);
+    width: 80%;
+    max-width: 600px;
+}
+
+.patient-types-content h1 {
+    font-size: 36px;
+    color: #1E90FF;
+    margin-bottom: 20px;
+}
+
+.patient-type-buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.patient-type-btn {
+    background-color: #1E90FF;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 20px;
+    border-radius: 5px;
+    margin: 10px;
+    cursor: pointer;
+    width: 45%;
+    transition: background-color 0.3s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.patient-type-btn:hover {
+    background-color: #4682B4;
+}
+
+.patient-type-btn:focus {
+    outline: none;
+    background-color: #357ab7;
+}
+
+.patient-type-btn:active {
+    transform: scale(0.98);
+    background-color: #357ab7;
+}
+
+/* Header Navigation Bar */
+.header-nav {
+    display: flex;
+    justify-content: flex-start;
+    background-color: #1E90FF;
+    padding: 10px 20px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.nav-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    padding: 10px 15px;
+    transition: background-color 0.3s;
+}
+
+.nav-btn:hover {
+    background-color: #4682B4;
+}
+
+.logout-btn {
+    background-color: #FF6347;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+}
+
+.logout-btn:hover {
+    background-color: #FF4500;
+}
+
+/* เพิ่ม CSS สำหรับการค้นหาข้อมูลและตาราง */
+.search-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 60px;
+    width: 100%;
+    max-width: 800px;
+    padding: 20px;
+}
+
+.search-box {
+    text-align: center;
+    padding: 40px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 20px;
+    box-shadow: 0px 0px 24px rgba(0, 0, 0, 0.2);
+    width: 100%;
+}
+
+.search-box input {
+    padding: 10px;
+    margin: 10px;
+    width: 80%;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.search-box button {
+    padding: 10px 20px;
+    border-radius: 5px;
+    background-color: #1E90FF;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.search-box button:hover {
+    background-color: #4682B4;
+}
+
+.results-container {
+    margin-top: 20px;
+    width: 100%;
+    max-width: 800px;
+}
+
+table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+th {
+    background-color: #f4f4f4;
+}
+

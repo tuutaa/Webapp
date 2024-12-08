@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ค้นหาข้อมูลผู้ป่วย</title>
+  <link rel="stylesheet" href="style2.css">
+</head>
+<body>
+  <div class="header-nav">
+    <button class="nav-btn home-btn" onclick="location.href='home.html'">Home</button>
+    <button class="logout-btn" onclick="logout()">Log Out</button>
+  </div>
+
+  <div class="search-container">
+    <div class="search-box">
+      <h1>ค้นหาข้อมูลใน Google Sheets</h1>
+      <label for="query">กรอกหมายเลข HN:</label>
+      <input type="text" id="query" placeholder="พิมพ์หมายเลข HN..." />
+      <button onclick="search()">ค้นหา</button>
+    </div>
+
+    <div class="results-container">
+      <table id="results">
+        <thead>
+          <tr id="table-header"></tr>
+        </thead>
+        <tbody id="table-body"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <script>
+    const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzNWYbw5MAtsjF9-f3EWCe7n2UMSM-0sHwlpB9LT7xPx0OyP0H4g4Md-1ggfO8nvnfs/exec"; // ใส่ Web App URL ของคุณ
+
+    async function search() {
+      const query = document.getElementById("query").value;
+      if (!query) {
+        alert("กรุณากรอกหมายเลข HN");
+        return;
+      }
+
+      const response = await fetch(`${WEB_APP_URL}?query=${encodeURIComponent(query)}`);
+      const data = await response.json();
+      
+      renderTable(data);
+    }
+
+    function renderTable(data) {
+      const tableHeader = document.getElementById("table-header");
+      const tableBody = document.getElementById("table-body");
+  
+      // เคลียร์ข้อมูลเก่าในตาราง
+      tableHeader.innerHTML = "";
+      tableBody.innerHTML = "";
+  
+      if (data.length > 0) {
+        // สร้างส่วนหัวของตาราง
+        Object.keys(data[0]).forEach(key => {
+          const th = document.createElement("th");
+          th.textContent = key;
+          tableHeader.appendChild(th);
+        });
+  
+        // เพิ่มข้อมูลในตาราง
+        data.forEach(row => {
+          const tr = document.createElement("tr");
+          Object.values(row).forEach(value => {
+            const td = document.createElement("td");
+            td.textContent = value;
+            tr.appendChild(td);
+          });
+  
+          // เพิ่มปุ่ม "การประเมินความเสี่ยง" และ "ดูข้อมูล"
+          const tdRiskAssessment = document.createElement("td");
+          const riskButton = document.createElement("button");
+          riskButton.textContent = "การประเมินความเสี่ยง";
+          riskButton.className = "action-btn";
+          riskButton.onclick = function() {
+            window.location.href = "https://forms.gle/r4NbGGWthaarp7ZK9"; // ไปยังหน้าประเมินความเสี่ยง
+          };
+  
+          const tdViewInfo = document.createElement("td");
+          const viewInfoButton = document.createElement("button");
+          viewInfoButton.textContent = "ดูข้อมูล";
+          viewInfoButton.className = "action-btn";
+          viewInfoButton.onclick = function() {
+            window.location.href = "patient_info.html"; // ไปยังหน้าข้อมูลผู้ป่วย
+          };
+  
+          tdRiskAssessment.appendChild(riskButton);
+          tdViewInfo.appendChild(viewInfoButton);
+          tr.appendChild(tdRiskAssessment);
+          tr.appendChild(tdViewInfo);
+  
+          tableBody.appendChild(tr);
+        });
+      } else {
+        const tr = document.createElement("tr");
+        const td = document.createElement("td");
+        td.textContent = "ไม่พบข้อมูล";
+        td.colSpan = tableHeader.children.length || 1;
+        tr.appendChild(td);
+        tableBody.appendChild(tr);
+      }
+    }
+
+    function logout() {
+      window.location.href = "login.html"; // ไปยังหน้า Login
+    }
+  </script>
+</body>
+</html>
