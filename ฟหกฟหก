@@ -1,0 +1,5 @@
+<div class="action-buttons">
+      <button class="action-btn" onclick="location.href='https://forms.gle/pY8zAAbUjMitZTqe9'">ประเมินความเสี่ยง</button>
+      <button class="action-btn" onclick="showSearch()">ค้นหาผลการประเมินเพิ่มเติม</button>
+    </div>
+  </div>

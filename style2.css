@@ -179,3 +179,58 @@ td button {
 }
 
 
+
+.patient-info-container {
+  text-align: center;
+  padding: 40px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 20px;
+  box-shadow: 0px 0px 24px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 800px;
+  margin: auto;
+}
+
+.info-item {
+  margin: 15px 0;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background-color: rgba(240, 248, 255, 0.9); /* สีฟ้าอ่อน */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  font-size: 18px;
+  text-align: left;
+}
+
+.info-item strong {
+  color: #1E90FF; /* สีเน้น */
+}
+
+.info-item span {
+  color: #333; /* สีตัวอักษรปกติ */
+}
+
+.action-buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  gap: 20px; /* เพิ่มระยะห่างระหว่างปุ่ม */
+}
+
+.action-btn {
+  padding: 10px 20px;
+  border-radius: 5px;
+  background-color: #1E90FF;
+  color: white;
+  border: none;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.action-btn:hover {
+  background-color: #4682B4;
+}
+
+

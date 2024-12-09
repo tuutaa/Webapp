@@ -14,7 +14,7 @@
 
   <div class="search-container">
     <div class="search-box">
-      <h1>ค้นหาข้อมูลใน Google Sheets</h1>
+      <h1>ค้นหาข้อมูลผู้ป่วยในระบบ</h1>
       <label for="query">กรอกหมายเลข HN:</label>
       <input type="text" id="query" placeholder="พิมพ์หมายเลข HN..." />
       <button onclick="search()">ค้นหา</button>
@@ -49,11 +49,11 @@
     function renderTable(data) {
       const tableHeader = document.getElementById("table-header");
       const tableBody = document.getElementById("table-body");
-  
+    
       // เคลียร์ข้อมูลเก่าในตาราง
       tableHeader.innerHTML = "";
       tableBody.innerHTML = "";
-  
+    
       if (data.length > 0) {
         // สร้างส่วนหัวของตาราง
         Object.keys(data[0]).forEach(key => {
@@ -61,7 +61,12 @@
           th.textContent = key;
           tableHeader.appendChild(th);
         });
-  
+    
+        // เพิ่มหัวข้อ "ดูข้อมูล"
+        const thViewInfo = document.createElement("th");
+        thViewInfo.textContent = "ดูข้อมูล";
+        tableHeader.appendChild(thViewInfo);
+    
         // เพิ่มข้อมูลในตาราง
         data.forEach(row => {
           const tr = document.createElement("tr");
@@ -70,29 +75,20 @@
             td.textContent = value;
             tr.appendChild(td);
           });
-  
-          // เพิ่มปุ่ม "การประเมินความเสี่ยง" และ "ดูข้อมูล"
-          const tdRiskAssessment = document.createElement("td");
-          const riskButton = document.createElement("button");
-          riskButton.textContent = "การประเมินความเสี่ยง";
-          riskButton.className = "action-btn";
-          riskButton.onclick = function() {
-            window.location.href = "https://forms.gle/r4NbGGWthaarp7ZK9"; // ไปยังหน้าประเมินความเสี่ยง
-          };
-  
+    
+          // เพิ่มปุ่ม "ดูข้อมูล"
           const tdViewInfo = document.createElement("td");
           const viewInfoButton = document.createElement("button");
           viewInfoButton.textContent = "ดูข้อมูล";
           viewInfoButton.className = "action-btn";
-          viewInfoButton.onclick = function() {
-            window.location.href = "patient_info.html"; // ไปยังหน้าข้อมูลผู้ป่วย
+          viewInfoButton.onclick = function () {
+            const patientData = encodeURIComponent(JSON.stringify(row));
+            window.location.href = `patient-profile.html?data=${patientData}`; // ส่งข้อมูลไปยัง URL
           };
-  
-          tdRiskAssessment.appendChild(riskButton);
+    
           tdViewInfo.appendChild(viewInfoButton);
-          tr.appendChild(tdRiskAssessment);
           tr.appendChild(tdViewInfo);
-  
+    
           tableBody.appendChild(tr);
         });
       } else {
