@@ -233,4 +233,22 @@ td button {
   background-color: #4682B4;
 }
 
+.lower-buttons {
+  display: flex; /* ใช้ flexbox เพื่อจัดเรียงปุ่ม */
+  justify-content: center; /* จัดให้อยู่กึ่งกลาง */
+  gap: 20px; /* เพิ่มระยะห่างระหว่างปุ่ม */
+  margin-top: 20px; /* เพิ่มระยะห่างด้านบน */
+}
+
+.lower-buttons .action-btn {
+  padding: 10px 20px; /* ปรับขนาดปุ่มให้ใหญ่ขึ้นเล็กน้อย */
+  font-size: 16px; /* ขยายตัวอักษร */
+  font-weight: bold; /* ทำตัวอักษรหนา */
+  border-radius: 5px; /* เพิ่มมุมโค้งของปุ่ม */
+  transition: transform 0.3s ease-in-out; /* เพิ่มเอฟเฟกต์เวลาเลื่อนเมาส์ */
+}
+
+.lower-buttons .action-btn:hover {
+  background-color: #4682B4; /* สีเข้มขึ้นเมื่อ hover */
+}
 

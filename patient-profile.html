@@ -17,19 +17,13 @@
     <div id="patient-info" class="info-box"></div>
 
     <div class="action-buttons">
-      <button class="action-btn" onclick="toggleSearch()">ดูผลการประเมิน</button>
+      <button class="action-btn" onclick="location.href='risk.html'">ดูความเสี่ยง</button>
       <button class="action-btn" onclick="location.href='https://forms.gle/pY8zAAbUjMitZTqe9'">ประเมินความเสี่ยง</button>
     </div>
-
-    <div id="search-container" class="search-container" style="display: none;">
-      <div class="search-box">
-        <label for="hospital-id">กรอกหมายเลข HN:</label>
-        <input type="text" id="hospital-id" placeholder="พิมพ์หมายเลข HN...">
-        <button onclick="searchHospitalData()">ค้นหา</button>
-      </div>
+    <div class="lower-buttons">
+      <button class="action-btn" onclick="location.href='care.html'">ดูผลการดูแล</button>
+      <button class="action-btn" onclick="location.href='https://forms.gle/ntaqn3U8WbBAZDEV6'">ประเมินการดูแล</button>
     </div>
-
-    <div id="results-container" class="results-container"></div>
   </div>
 
   <script>
@@ -58,70 +52,6 @@
       } else {
         document.getElementById("patient-info").textContent = "ไม่พบข้อมูลผู้ป่วย";
       }
-    }
-
-    function toggleSearch() {
-      const searchContainer = document.getElementById("search-container");
-      searchContainer.style.display = searchContainer.style.display === "none" ? "block" : "none";
-    }
-
-    async function searchHospitalData() {
-      const hospitalId = document.getElementById("hospital-id").value;
-      if (!hospitalId) {
-        alert("กรุณากรอกหมายเลขโรงพยาบาล");
-        return;
-      }
-
-      const response = await fetch(`https://script.google.com/macros/s/AKfycbzG6nIWUhsXOpgb90lDcCMKugMDl5l40Y1b844W4U3T3mo5DR0W2pCLSMUtHluUomo/exec?hospitalId=${encodeURIComponent(hospitalId)}`);
-      const data = await response.json();
-
-      renderResults(data);
-    }
-
-    function renderResults(data) {
-      const resultsContainer = document.getElementById("results-container");
-      resultsContainer.innerHTML = "";
-
-      const table = document.createElement("table");
-      const thead = document.createElement("thead");
-      const tbody = document.createElement("tbody");
-
-      // สร้างส่วนหัวตาราง
-      const headers = ["วันที่ประเมิน", "คะแนนรวม", "ระดับความเสี่ยง"];
-      const headerRow = document.createElement("tr");
-      headers.forEach(header => {
-        const th = document.createElement("th");
-        th.textContent = header;
-        headerRow.appendChild(th);
-      });
-      thead.appendChild(headerRow);
-
-      // สร้างส่วนข้อมูล
-      data.forEach(row => {
-        const tr = document.createElement("tr");
-
-        // หมายเลข HN
-        const tdHN = document.createElement("td");
-        tdHN.textContent = row.hn;
-        tr.appendChild(tdHN);
-
-        // คะแนนรวม
-        const totalScore = row.scores.reduce((sum, score) => sum + score, 0);
-        const tdTotalScore = document.createElement("td");
-        tdTotalScore.textContent = totalScore;
-        tr.appendChild(tdTotalScore);
-
-        // ระดับความเสี่ยง
-        const tdRiskLevel = document.createElement("td");
-        tdRiskLevel.textContent = totalScore <= 5 ? "ระดับความเสี่ยงต่ำ" : "ระดับความเสี่ยงสูง";
-        tr.appendChild(tdRiskLevel);
-
-        tbody.appendChild(tr);
-      });
-
-      table.appendChild(thead);
-      table.appendChild(tbody);
-      resultsContainer.appendChild(table);
     }
 
     function logout() {

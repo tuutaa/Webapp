@@ -400,3 +400,199 @@ th {
     background-color: #f4f4f4;
 }
 
+
+/* nursing activity */ 
+
+.nursing-activities-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(90deg, #90d4ff, #0d9adc);
+    margin-top: 60px;
+}
+
+.nursing-activities-content {
+    text-align: center;
+    padding: 40px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 20px;
+    box-shadow: 0px 0px 24px rgba(0, 0, 0, 0.2);
+    width: 80%;
+    max-width: 600px;
+}
+
+.nursing-activities-content h1 {
+    font-size: 36px;
+    color: #1E90FF;
+    margin-bottom: 20px;
+}
+
+.nursing-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.nursing-btn {
+    background-color: #1E90FF;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.nursing-btn:hover {
+    background-color: #4682B4;
+}
+
+.nursing-btn:focus {
+    outline: none;
+    background-color: #357ab7;
+}
+
+.nursing-btn:active {
+    transform: scale(0.98);
+    background-color: #357ab7;
+}
+
+
+
+/* หน้า Nursing Low Risk */
+.nursing-low-risk-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(90deg, #90d4ff, #0d9adc);
+    margin-top: 60px;
+}
+
+.nursing-low-risk-content {
+    text-align: center;
+    padding: 40px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 20px;
+    box-shadow: 0px 0px 24px rgba(0, 0, 0, 0.2);
+    width: 80%;
+    max-width: 1200px;
+}
+
+.nursing-low-risk-content h1 {
+    font-size: 36px;
+    color: #1E90FF;
+    margin-bottom: 20px;
+}
+
+.icon-buttons1 {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.icon-btn1 {
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+    width: 45%;
+}
+
+.icon-btn1 img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.icon-btn1 p {
+    font-size: 18px;
+    color: #333;
+    font-weight: bold;
+}
+
+.icon-btn1:hover {
+    transform: scale(1.1); /* ทำให้ขยายเมื่อกด */
+}
+
+.icon-btn1:active {
+    transform: scale(0.98); /* ทำให้เล็กลงเมื่อคลิก */
+}
+
+/* ซ่อนไอคอนเพิ่มเติมในตอนเริ่มต้น */
+.additional-icons {
+    display: none;
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.additional-icons .icon-btn1 {
+    width: 30%;
+}
+
+
+/* ไอคอนเพิ่มเติม */
+.extra-icons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.icon-btn {
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+    width: 100px;
+}
+
+.icon-btn img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.icon-btn p {
+    font-size: 14px;
+    color: #333;
+}
+
+.icon-btn:hover {
+    transform: scale(1.1); /* ทำให้ขยายเมื่อกด */
+}
+
+.icon-btn:active {
+    transform: scale(0.98); /* ทำให้เล็กลงเมื่อคลิก */
+}
+
+
+
+/* สไตล์สำหรับกล่องข้อความ */
+.message-box {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #f0f8ff;
+    border-radius: 8px;
+    border: 1px solid #b0c4de;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 850px;  /* ขยายความกว้างของกล่องข้อความ */
+    width: 100%;  /* ให้กล่องข้อความยืดเต็มความกว้าง */
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;  /* จัดข้อความชิดซ้าย */
+}
+
+.message-box p {
+    font-size: 16px;
+    color: #333;
+    line-height: 1.6;
+    margin: 0; /* ให้ข้อความชิดขอบกล่อง */
+}
+

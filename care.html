@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ข้อมูลการดูแล</title>
+  <link rel="stylesheet" href="style2.css">
+</head>
+<body>
+  <div class="header-nav">
+    <button class="nav-btn home-btn" onclick="location.href='home.html'">Home</button>
+    <button class="logout-btn" onclick="logout()">Log Out</button>
+  </div>
+
+  <div class="search-container">
+    <div class="search-box">
+      <label for="care-id">กรอกหมายเลข HN เพื่อดู"ผลการดูแล":</label>
+      <input type="text" id="care-id" placeholder="พิมพ์หมายเลข HN...">
+      <button onclick="searchCare()">ค้นหา</button>
+    </div>
+  </div>
+
+  <div id="results-container" class="results-container"></div>
+
+  <script>
+    async function searchCare() {
+      const careID = document.getElementById("care-id").value.trim();
+      const resultsContainer = document.getElementById("results-container");
+      resultsContainer.innerHTML = "";
+
+      if (!careID) {
+        alert("กรุณากรอก CareID");
+        return;
+      }
+
+      try {
+        const response = await fetch(
+          `https://script.google.com/macros/s/AKfycbzChBhGkhcvgYqwXWifdoO6bnysx5jJVA3PLnpWQv5pOp12CjHLi6srFTUpWW_9Mhdc/exec?careID=${encodeURIComponent(careID)}`
+        );
+        const data = await response.json();
+
+        if (data.status === "success" && data.result.length > 0) {
+          const table = document.createElement("table");
+          table.border = "1";
+
+          // สร้างส่วนหัวตาราง
+          const thead = table.createTHead();
+          const headerRow = thead.insertRow();
+          const headers = Object.keys(data.result[0]).filter((key) => !["ลักษณะความแห้ง", "ลักษณะของผื่นแดง", "ลักษณะการแตกของผิว"].includes(key));
+          headers.splice(headers.indexOf("ระดับของการเกิดแผลบนผิวหน้า"), 0, "คะแนนรวมของการเกิดแผลบนใบหน้า");
+
+          headers.forEach((key) => {
+            const th = document.createElement("th");
+            th.textContent = key;
+            headerRow.appendChild(th);
+          });
+
+          // สร้างข้อมูลตาราง
+          const tbody = table.createTBody();
+          data.result.forEach((row) => {
+            const tr = tbody.insertRow();
+            const totalScore = row["ลักษณะความแห้ง"] + row["ลักษณะของผื่นแดง"] + row["ลักษณะการแตกของผิว"];
+
+            headers.forEach((key) => {
+              const td = tr.insertCell();
+              if (key === "คะแนนรวมของการเกิดแผลบนใบหน้า") {
+                td.textContent = totalScore;
+              } else {
+                td.textContent = row[key] || "";
+              }
+            });
+          });
+
+          resultsContainer.appendChild(table);
+        } else {
+          resultsContainer.innerHTML = "ไม่พบข้อมูลสำหรับ CareID นี้";
+        }
+      } catch (error) {
+        console.error("Error fetching data:", error);
+        resultsContainer.innerHTML = "เกิดข้อผิดพลาดในการดึงข้อมูล";
+      }
+    }
+
+    function logout() {
+      window.location.href = "login.html";
+    }
+  </script>
+</body>
+</html>
