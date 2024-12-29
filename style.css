@@ -459,6 +459,23 @@ th {
     background-color: #357ab7;
 }
 
+.nursing-btn.high-risk {
+    background-color: #FF4500; /* สีแดง */
+}
+
+.nursing-btn.high-risk:hover {
+    background-color: #DC143C; /* สีแดงเข้ม */
+}
+
+.nursing-btn.high-risk:focus {
+    background-color: #B22222; /* สีแดงเข้มพิเศษ */
+}
+
+.nursing-btn.high-risk:active {
+    background-color: #8B0000; /* สีแดงเข้มมาก */
+    transform: scale(0.98);
+}
+
 
 
 /* หน้า Nursing Low Risk */
