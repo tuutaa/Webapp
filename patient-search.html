@@ -19,57 +19,84 @@
       <h1>ค้นหาข้อมูลผู้ป่วยในระบบ</h1>
       <label for="query">กรอกหมายเลข HN:</label>
       <input type="text" id="query" placeholder="พิมพ์หมายเลข HN..." />
-      <button onclick="search()">ค้นหา</button>
+      <button onclick="searchAll()">ค้นหา</button>
+    </div>
+  </div>
+
+  <!-- ซ่อนผลลัพธ์ตั้งแต่แรก -->
+  <div id="results-container" style="display: none;">
+    <div class="results-section">
+      <h2>ข้อมูลผู้ป่วย</h2>
+      <table id="patient-data">
+        <thead id="patient-header"></thead>
+        <tbody id="patient-body"></tbody>
+      </table>
     </div>
 
-    <div class="results-container">
-      <table id="results">
-        <thead>
-          <tr id="table-header"></tr>
-        </thead>
-        <tbody id="table-body"></tbody>
+    <div class="results-section">
+      <h2>ข้อมูลความเสี่ยง</h2>
+      <table id="risk-data">
+        <thead id="risk-header"></thead>
+        <tbody id="risk-body"></tbody>
+      </table>
+    </div>
+
+    <div class="results-section">
+      <h2>ข้อมูลการดูแล</h2>
+      <table id="care-data">
+        <thead id="care-header"></thead>
+        <tbody id="care-body"></tbody>
       </table>
     </div>
   </div>
 
   <script>
-    const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzNWYbw5MAtsjF9-f3EWCe7n2UMSM-0sHwlpB9LT7xPx0OyP0H4g4Md-1ggfO8nvnfs/exec"; // ใส่ Web App URL ของคุณ
+    const PATIENT_DATA_URL = "https://script.google.com/macros/s/AKfycbzNWYbw5MAtsjF9-f3EWCe7n2UMSM-0sHwlpB9LT7xPx0OyP0H4g4Md-1ggfO8nvnfs/exec";
+    const RISK_DATA_URL = "https://script.google.com/macros/s/AKfycbzG6nIWUhsXOpgb90lDcCMKugMDl5l40Y1b844W4U3T3mo5DR0W2pCLSMUtHluUomo/exec";
+    const CARE_DATA_URL = "https://script.google.com/macros/s/AKfycbzChBhGkhcvgYqwXWifdoO6bnysx5jJVA3PLnpWQv5pOp12CjHLi6srFTUpWW_9Mhdc/exec";
 
-    async function search() {
-      const query = document.getElementById("query").value;
+    async function searchAll() {
+      const query = document.getElementById("query").value.trim();
       if (!query) {
         alert("กรุณากรอกหมายเลข HN");
         return;
       }
 
-      const response = await fetch(`${WEB_APP_URL}?query=${encodeURIComponent(query)}`);
-      const data = await response.json();
-      
-      renderTable(data);
+      try {
+        const patientData = await fetch(`${PATIENT_DATA_URL}?query=${encodeURIComponent(query)}`).then(res => res.json());
+        const riskData = await fetch(`${RISK_DATA_URL}?hospitalId=${encodeURIComponent(query)}`).then(res => res.json());
+        const careData = await fetch(`${CARE_DATA_URL}?careID=${encodeURIComponent(query)}`).then(res => res.json());
+
+        renderTable("patient-header", "patient-body", patientData);
+        renderRiskTable("risk-header", "risk-body", riskData);
+        renderCareTable("care-header", "care-body", careData);
+
+        // แสดงผลหลังจากได้รับข้อมูล
+        document.getElementById("results-container").style.display = "block";
+      } catch (error) {
+        console.error("Error fetching data:", error);
+        alert("เกิดข้อผิดพลาดในการดึงข้อมูล");
+      }
     }
 
-    function renderTable(data) {
-      const tableHeader = document.getElementById("table-header");
-      const tableBody = document.getElementById("table-body");
-    
-      // เคลียร์ข้อมูลเก่าในตาราง
+    function renderTable(headerId, bodyId, data) {
+      const tableHeader = document.getElementById(headerId);
+      const tableBody = document.getElementById(bodyId);
+
       tableHeader.innerHTML = "";
       tableBody.innerHTML = "";
-    
+
       if (data.length > 0) {
-        // สร้างส่วนหัวของตาราง
-        Object.keys(data[0]).forEach(key => {
+        const keys = Object.keys(data[0]);
+
+        const headerRow = document.createElement("tr");
+        keys.forEach(key => {
           const th = document.createElement("th");
           th.textContent = key;
-          tableHeader.appendChild(th);
+          headerRow.appendChild(th);
         });
-    
-        // เพิ่มหัวข้อ "ดูข้อมูล"
-        const thViewInfo = document.createElement("th");
-        thViewInfo.textContent = "ดูข้อมูล";
-        tableHeader.appendChild(thViewInfo);
-    
-        // เพิ่มข้อมูลในตาราง
+        tableHeader.appendChild(headerRow);
+
         data.forEach(row => {
           const tr = document.createElement("tr");
           Object.values(row).forEach(value => {
@@ -77,34 +104,106 @@
             td.textContent = value;
             tr.appendChild(td);
           });
-    
-          // เพิ่มปุ่ม "ดูข้อมูล"
-          const tdViewInfo = document.createElement("td");
-          const viewInfoButton = document.createElement("button");
-          viewInfoButton.textContent = "ดูข้อมูล";
-          viewInfoButton.className = "action-btn";
-          viewInfoButton.onclick = function () {
-            const patientData = encodeURIComponent(JSON.stringify(row));
-            window.location.href = `patient-profile.html?data=${patientData}`; // ส่งข้อมูลไปยัง URL
-          };
-    
-          tdViewInfo.appendChild(viewInfoButton);
-          tr.appendChild(tdViewInfo);
-    
           tableBody.appendChild(tr);
         });
       } else {
         const tr = document.createElement("tr");
         const td = document.createElement("td");
         td.textContent = "ไม่พบข้อมูล";
-        td.colSpan = tableHeader.children.length || 1;
+        td.colSpan = "100%";
+        tr.appendChild(td);
+        tableBody.appendChild(tr);
+      }
+    }
+
+    function renderRiskTable(headerId, bodyId, data) {
+      const tableHeader = document.getElementById(headerId);
+      const tableBody = document.getElementById(bodyId);
+
+      tableHeader.innerHTML = "";
+      tableBody.innerHTML = "";
+
+      if (data.length > 0) {
+        const headerRow = document.createElement("tr");
+        const headers = ["วันที่ประเมิน", "คะแนนรวม", "ระดับความเสี่ยง"];
+        headers.forEach(header => {
+          const th = document.createElement("th");
+          th.textContent = header;
+          headerRow.appendChild(th);
+        });
+        tableHeader.appendChild(headerRow);
+
+        data.forEach(row => {
+          const tr = document.createElement("tr");
+
+          const tdFirstColumn = document.createElement("td");
+          tdFirstColumn.textContent = row[Object.keys(row)[0]];
+          tr.appendChild(tdFirstColumn);
+
+          const totalScore = row.scores.reduce((sum, score) => sum + score, 0);
+          const tdTotalScore = document.createElement("td");
+          tdTotalScore.textContent = totalScore;
+          tr.appendChild(tdTotalScore);
+
+          const tdRiskLevel = document.createElement("td");
+          const riskLevel = totalScore <= 5 ? "ระดับความเสี่ยงต่ำ" : "ระดับความเสี่ยงสูง";
+          tdRiskLevel.textContent = riskLevel;
+          tr.appendChild(tdRiskLevel);
+
+          tableBody.appendChild(tr);
+        });
+      } else {
+        const tr = document.createElement("tr");
+        const td = document.createElement("td");
+        td.textContent = "ไม่พบข้อมูล";
+        td.colSpan = "100%";
+        tr.appendChild(td);
+        tableBody.appendChild(tr);
+      }
+    }
+
+    function renderCareTable(headerId, bodyId, data) {
+      const tableHeader = document.getElementById(headerId);
+      const tableBody = document.getElementById(bodyId);
+
+      tableHeader.innerHTML = "";
+      tableBody.innerHTML = "";
+
+      if (data.status === "success" && data.result.length > 0) {
+        const headers = Object.keys(data.result[0]).filter((key, index) => index !== 1 && !["ลักษณะความแห้ง", "ลักษณะของผื่นแดง", "ลักษณะการแตกของผิว"].includes(key));
+        headers.splice(headers.indexOf("ระดับของการเกิดแผลบนผิวหน้า"), 0, "คะแนนรวมของการเกิดแผลบนใบหน้า");
+
+        const headerRow = document.createElement("tr");
+        headers.forEach(key => {
+          const th = document.createElement("th");
+          th.textContent = key;
+          headerRow.appendChild(th);
+        });
+        tableHeader.appendChild(headerRow);
+
+        data.result.forEach(row => {
+          const tr = document.createElement("tr");
+          const totalScore = row["ลักษณะความแห้ง"] + row["ลักษณะของผื่นแดง"] + row["ลักษณะการแตกของผิว"];
+
+          headers.forEach(key => {
+            const td = document.createElement("td");
+            td.textContent = key === "คะแนนรวมของการเกิดแผลบนใบหน้า" ? totalScore : row[key] || "";
+            tr.appendChild(td);
+          });
+          tableBody.appendChild(tr);
+        });
+      } else {
+        const tr = document.createElement("tr");
+        const td = document.createElement("td");
+        td.textContent = "ไม่พบข้อมูล";
+        td.colSpan = "100%";
         tr.appendChild(td);
         tableBody.appendChild(tr);
       }
     }
 
     function logout() {
-      window.location.href = "login.html"; // ไปยังหน้า Login
+      window.location.href = "login.html";
     }
   </script>
 </body>

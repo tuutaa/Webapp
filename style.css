@@ -291,6 +291,39 @@ body {
     background-color: #357ab7;
 }
 
+/* New patient buttons */
+#new-patient-options {
+    display: flex;
+    flex-direction: row;  /* ปรับให้ปุ่มเรียงในบรรทัดเดียว */
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.new-patient-option {
+    background-color: #c127f9;
+    color: white;
+    font-size: 18px;
+    border-radius: 5px;
+    padding: 12px 20px;
+    width: 60%;  /* ปรับขนาดให้พอดี */
+    transition: background-color 0.3s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.new-patient-option:hover {
+    background-color: #a548f6;
+}
+
+.new-patient-option:focus {
+    outline: none;
+    background-color: #6e388e;
+}
+
+.new-patient-option:active {
+    transform: scale(0.98);
+    background-color: #5e256e;
+}
+
 /* Header Navigation Bar */
 .header-nav {
     display: flex;
