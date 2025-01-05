@@ -10,7 +10,7 @@
 <body>
   <div class="header-nav">
     <button class="nav-btn home-btn" onclick="location.href='home.html'">Home</button>
-    <button class="nav-btn" onclick="location.href='patient-types.html'">ประเภทผู้ป่วย</button>
+    <button class="nav-btn" onclick="location.href='patient-types.html'">ข้อมูลผู้ป่วย</button>
     <button class="logout-btn" onclick="logout()">Log Out</button>
   </div>
 
@@ -119,37 +119,60 @@
     function renderRiskTable(headerId, bodyId, data) {
       const tableHeader = document.getElementById(headerId);
       const tableBody = document.getElementById(bodyId);
-
+    
       tableHeader.innerHTML = "";
       tableBody.innerHTML = "";
-
+    
       if (data.length > 0) {
         const headerRow = document.createElement("tr");
-        const headers = ["วันที่ประเมิน", "คะแนนรวม", "ระดับความเสี่ยง"];
+        const headers = ["วันที่ประเมิน", "คะแนนรวม", "ระดับความเสี่ยง", "การพยาบาลความเสี่ยง"];
         headers.forEach(header => {
           const th = document.createElement("th");
           th.textContent = header;
           headerRow.appendChild(th);
         });
         tableHeader.appendChild(headerRow);
-
+    
         data.forEach(row => {
           const tr = document.createElement("tr");
-
+    
+          // วันที่
           const tdFirstColumn = document.createElement("td");
           tdFirstColumn.textContent = row[Object.keys(row)[0]];
           tr.appendChild(tdFirstColumn);
-
+    
+          // คะแนนรวม
           const totalScore = row.scores.reduce((sum, score) => sum + score, 0);
           const tdTotalScore = document.createElement("td");
           tdTotalScore.textContent = totalScore;
           tr.appendChild(tdTotalScore);
-
+    
+          // ระดับความเสี่ยง
           const tdRiskLevel = document.createElement("td");
           const riskLevel = totalScore <= 5 ? "ระดับความเสี่ยงต่ำ" : "ระดับความเสี่ยงสูง";
           tdRiskLevel.textContent = riskLevel;
           tr.appendChild(tdRiskLevel);
-
+    
+          // ปุ่มลิงก์
+          const tdActions = document.createElement("td");
+          const button = document.createElement("button");
+          
+          // ตั้งชื่อปุ่มตามระดับความเสี่ยง
+          button.textContent = riskLevel === "ระดับความเสี่ยงต่ำ" 
+            ? "การพยาบาลความเสี่ยงต่ำ" 
+            : "การพยาบาลความเสี่ยงสูง";
+    
+          button.classList.add("action-btn");
+    
+          // กำหนดลิงก์สำหรับระดับความเสี่ยง
+          button.onclick = () => {
+            const link = riskLevel === "ระดับความเสี่ยงต่ำ" ? "nursing-low-risk.html" : "nursing-high-risk.html";
+            window.location.href = link;
+          };
+    
+          tdActions.appendChild(button);
+          tr.appendChild(tdActions);
+    
           tableBody.appendChild(tr);
         });
       } else {
@@ -161,7 +184,8 @@
         tableBody.appendChild(tr);
       }
     }
-
+    
+    
     function renderCareTable(headerId, bodyId, data) {
       const tableHeader = document.getElementById(headerId);
       const tableBody = document.getElementById(bodyId);
