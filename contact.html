@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ช่องทางการติดต่อ</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="ICON" href="home/Nursing_KKU_Thai_Symbol.svg.png">
+</head>
+<body>
+    <!-- Header navigation bar -->
+    <div class="header-nav">
+        <button class="nav-btn home-btn" onclick="location.href='home.html'">Home</button>
+        <button class="nav-btn" onclick="location.href='contact.html'">ช่องทางการติดต่อ</button>
+        <button class="logout-btn" onclick="logout()">Log Out</button>
+    </div>
+
+    <!-- Contact Information -->
+    <div class="contact-container">
+        <h1>ช่องทางการติดต่อ</h1>
+        
+        <div class="contact-info">
+            <h2>ข้อมูลติดต่อ</h2>
+            <ul>
+                <li><strong>เบอร์โทรศัพท์:</strong> +66 1234 5678</li>
+                <li><strong>อีเมล:</strong> nursing@kku.ac.th</li>
+                <li><strong>ที่อยู่:</strong> คณะพยาบาลศาสตร์ มหาวิทยาลัยขอนแก่น, ถ.มิตรภาพ, ขอนแก่น 40002, ประเทศไทย</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        function logout() {
+            window.location.href = "login.html";
+        }
+    </script>
+</body>
+</html>

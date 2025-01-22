@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>คู่มือสำหรับพยาบาล</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="ICON" href="home/Nursing_KKU_Thai_Symbol.svg.png">
+</head>
+<body>
+    <!-- Header navigation bar -->
+    <div class="header-nav">
+        <button class="nav-btn home-btn" onclick="location.href='home.html'">Home</button>
+        <button class="nav-btn" onclick="location.href='nursing-manual.html'">คู่มือสำหรับพยาบาล</button>
+        <button class="logout-btn" onclick="logout()">Log Out</button>
+    </div>
+
+    <!-- Nursing Manual Content -->
+    <div class="manual-container">
+        <h1>คู่มือการพยาบาล</h1> <!-- เพิ่มหัวข้อ -->
+        
+        <div class="video-container">
+            <video controls width="80%">
+                <source src="" type="video/mp4">
+                เบราว์เซอร์ของคุณไม่รองรับการเล่นวิดีโอ
+            </video>
+            
+            <!-- ข้อความอธิบายใต้คลิป -->
+            <p class="video-description">การป้องกันแผลจากการใส่ท่อช่วยหายใจเป็นสิ่งสำคัญในการดูแลผู้ป่วย</p>
+
+            <!-- PDF Downloads -->
+            <div class="pdf-downloads">
+                <h2>ข้อมูลที่เกี่ยวข้อง</h2>
+                <ul>
+                    <li><a href="" target="_blank">คู่มือการพยาบาลMDRPU</a></li>
+                    <li><a href="" target="_blank">แบบประเมินเเละFlowปรับล่าสุด</a></li>
+                    <li><a href="" target="_blank">ตารางรายละเอียดชุดการดูเเล</a></li>
+                    <li><a href="" target="_blank">แบบบันทึกข้อมูลทั่วไป</a></li>
+                    <li><a href="" target="_blank">แบบบันทึกผลการพยาบาล+ประเมินแผล</a></li>
+                    <!-- เพิ่มลิงก์ไฟล์ PDF อื่น ๆ ได้ตามต้องการ -->
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function logout() {
+            window.location.href = "login.html";
+        }
+    </script>
+</body>
+</html>

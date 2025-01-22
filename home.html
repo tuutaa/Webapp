@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="ICON" href="home/Nursing_KKU_Thai_Symbol.svg.png">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <!-- Header navigation bar -->
+    <div class="header-nav">
+        <button class="nav-btn home-btn" onclick="location.href='home.html'">Home</button> <!-- Home button -->
+        <button class="nav-btn" onclick="location.href='patient-types.html'">ข้อมูลผู้ป่วย</button>
+        <button class="nav-btn" onclick="location.href='nursing-activities.html'">กิจกรรมการพยาบาล</button>
+        <button class="nav-btn" onclick="location.href='nursing-manual.html'">คู่มือสำหรับพยาบาล</button>
+        <button class="nav-btn" onclick="location.href='contact.html'">ช่องทางการติดต่อ</button>
+        <button class="logout-btn" onclick="logout()">Log Out</button> <!-- Log Out button -->
+    </div>
+
+    <!-- Main content (Empty for now) -->
+    <div class="home-container">
+        <div class="home-content">
+            <!-- Content space left empty -->
+            <p>ส่วนตรงกลางว่างไว้ให้ใส่เนื้อหาภายหลัง</p> <!-- ใส่เนื้อหาหรือรูปภาพที่ต้องการในภายหลัง -->
+        </div>
+    </div>
+
+    <script>
+        function logout() {
+            window.location.href = "login.html"; // ไปยังหน้า Login
+        }
+    </script>
+</body>
+</html>

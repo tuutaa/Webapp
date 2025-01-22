@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>กิจกรรมการพยาบาล</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="ICON" href="home/Nursing_KKU_Thai_Symbol.svg.png">
+</head>
+<body>
+    <!-- Header navigation bar -->
+    <div class="header-nav">
+        <button class="nav-btn home-btn" onclick="location.href='home.html'">Home</button>
+        <button class="nav-btn" onclick="location.href='nursing-activities.html'">กิจกรรมการพยาบาล</button>
+        <button class="logout-btn" onclick="logout()">Log Out</button>
+    </div>
+
+    <!-- Main content -->
+    <div class="nursing-activities-container">
+        <div class="nursing-activities-content">
+            <h1>เลือกประเภทการพยาบาล</h1>
+            <div class="nursing-buttons">
+                <button class="nursing-btn" onclick="location.href='nursing-low-risk.html'">การพยาบาลสำหรับกลุ่มเสี่ยงต่ำ</button>
+                <button class="nursing-btn high-risk" onclick="location.href='nursing-high-risk.html'">การพยาบาลสำหรับกลุ่มเสี่ยงสูง</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function logout() {
+            window.location.href = "login.html"; // ไปยังหน้า Login
+        }
+    </script>
+</body>
+</html>

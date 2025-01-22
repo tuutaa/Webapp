@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ค้นหาข้อมูลผู้ป่วย</title>
+  <link rel="stylesheet" href="style2.css">
+  <link rel="ICON" href="home/Nursing_KKU_Thai_Symbol.svg.png">
+</head>
+<body>
+  <div class="header-nav">
+    <button class="nav-btn home-btn" onclick="location.href='home.html'">Home</button>
+    <button class="nav-btn" onclick="location.href='patient-types.html'">ข้อมูลผู้ป่วย</button>
+    <button class="logout-btn" onclick="logout()">Log Out</button>
+  </div>
+
+  <div class="search-container">
+    <div class="search-box">
+      <h1>ค้นหาข้อมูลผู้ป่วยในระบบ</h1>
+      <label for="query">กรอกหมายเลข HN:</label>
+      <input type="text" id="query" placeholder="พิมพ์หมายเลข HN..." />
+      <button onclick="searchAll()">ค้นหา</button>
+    </div>
+  </div>
+
+  <!-- ซ่อนผลลัพธ์ตั้งแต่แรก -->
+  <div id="results-container" style="display: none;">
+    <div class="results-section" id="patient-results"></div>
+    <div class="results-section">
+      <h2>ข้อมูลความเสี่ยง</h2>
+      <table id="risk-data">
+        <thead id="risk-header"></thead>
+        <tbody id="risk-body"></tbody>
+      </table>
+    </div>
+
+    <div class="results-section">
+      <h2>ข้อมูลการดูแล</h2>
+      <table id="care-data">
+        <thead id="care-header"></thead>
+        <tbody id="care-body"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <script>
+    const PATIENT_DATA_URL = "https://script.google.com/macros/s/AKfycbzNWYbw5MAtsjF9-f3EWCe7n2UMSM-0sHwlpB9LT7xPx0OyP0H4g4Md-1ggfO8nvnfs/exec";
+    const RISK_DATA_URL = "https://script.google.com/macros/s/AKfycbzG6nIWUhsXOpgb90lDcCMKugMDl5l40Y1b844W4U3T3mo5DR0W2pCLSMUtHluUomo/exec";
+    const CARE_DATA_URL = "https://script.google.com/macros/s/AKfycbzChBhGkhcvgYqwXWifdoO6bnysx5jJVA3PLnpWQv5pOp12CjHLi6srFTUpWW_9Mhdc/exec";
+
+    async function searchAll() {
+      const query = document.getElementById("query").value.trim();
+      if (!query) {
+        alert("กรุณากรอกหมายเลข HN");
+        return;
+      }
+
+      try {
+        const patientData = await fetch(`${PATIENT_DATA_URL}?query=${encodeURIComponent(query)}`).then(res => res.json());
+        const riskData = await fetch(`${RISK_DATA_URL}?hospitalId=${encodeURIComponent(query)}`).then(res => res.json());
+        const careData = await fetch(`${CARE_DATA_URL}?careID=${encodeURIComponent(query)}`).then(res => res.json());
+
+        renderPatientTables(patientData);
+        renderRiskTable("risk-header", "risk-body", riskData);
+        renderCareTable("care-header", "care-body", careData);
+
+        document.getElementById("results-container").style.display = "block";
+      } catch (error) {
+        console.error("Error fetching data:", error);
+        alert("เกิดข้อผิดพลาดในการดึงข้อมูล");
+      }
+    }
+
+    function renderPatientTables(data) {
+      const container = document.getElementById("patient-results");
+      container.innerHTML = "<h2>ข้อมูลผู้ป่วย</h2>";
+
+      if (data.length > 0) {
+        const keys = Object.keys(data[0]);
+        let tableIndex = 0;
+
+        for (let i = 0; i < keys.length; i += 7) {
+          const table = document.createElement("table");
+          const header = document.createElement("thead");
+          const body = document.createElement("tbody");
+
+          const headerRow = document.createElement("tr");
+          keys.slice(i, i + 7).forEach(key => {
+            const th = document.createElement("th");
+            th.textContent = key;
+            headerRow.appendChild(th);
+          });
+          header.appendChild(headerRow);
+          table.appendChild(header);
+
+          data.forEach(row => {
+            const tr = document.createElement("tr");
+            keys.slice(i, i + 7).forEach(key => {
+              const td = document.createElement("td");
+              td.textContent = row[key] || "";
+              tr.appendChild(td);
+            });
+            body.appendChild(tr);
+          });
+
+          table.appendChild(body);
+          container.appendChild(table);
+          tableIndex++;
+        }
+      } else {
+        container.innerHTML += "<p>ไม่พบข้อมูล</p>";
+      }
+    }
+
+    function renderRiskTable(headerId, bodyId, data) {
+      const tableHeader = document.getElementById(headerId);
+      const tableBody = document.getElementById(bodyId);
+
+      tableHeader.innerHTML = "";
+      tableBody.innerHTML = "";
+
+      if (data.length > 0) {
+        const headerRow = document.createElement("tr");
+        const headers = ["วันที่ประเมิน", "คะแนนรวม", "ระดับความเสี่ยง", "การพยาบาลความเสี่ยง"];
+        headers.forEach(header => {
+          const th = document.createElement("th");
+          th.textContent = header;
+          headerRow.appendChild(th);
+        });
+        tableHeader.appendChild(headerRow);
+
+        data.forEach(row => {
+          const tr = document.createElement("tr");
+
+          const tdFirstColumn = document.createElement("td");
+          tdFirstColumn.textContent = row[Object.keys(row)[0]];
+          tr.appendChild(tdFirstColumn);
+
+          const totalScore = row.scores.reduce((sum, score) => sum + score, 0);
+          const tdTotalScore = document.createElement("td");
+          tdTotalScore.textContent = totalScore;
+          tr.appendChild(tdTotalScore);
+
+          const tdRiskLevel = document.createElement("td");
+          const riskLevel = totalScore <= 5 ? "ระดับความเสี่ยงต่ำ" : "ระดับความเสี่ยงสูง";
+          tdRiskLevel.textContent = riskLevel;
+          tr.appendChild(tdRiskLevel);
+
+          const tdActions = document.createElement("td");
+          const button = document.createElement("button");
+          button.textContent = riskLevel === "ระดับความเสี่ยงต่ำ" ? "การพยาบาลความเสี่ยงต่ำ" : "การพยาบาลความเสี่ยงสูง";
+          button.classList.add("action-btn");
+          button.onclick = () => {
+            const link = riskLevel === "ระดับความเสี่ยงต่ำ" ? "nursing-low-risk.html" : "nursing-high-risk.html";
+            window.location.href = link;
+          };
+          tdActions.appendChild(button);
+          tr.appendChild(tdActions);
+
+          tableBody.appendChild(tr);
+        });
+      } else {
+        const tr = document.createElement("tr");
+        const td = document.createElement("td");
+        td.textContent = "ไม่พบข้อมูล";
+        td.colSpan = "100%";
+        tr.appendChild(td);
+        tableBody.appendChild(tr);
+      }
+    }
+
+    function renderCareTable(headerId, bodyId, data) {
+      const tableHeader = document.getElementById(headerId);
+      const tableBody = document.getElementById(bodyId);
+
+      tableHeader.innerHTML = "";
+      tableBody.innerHTML = "";
+
+      if (data.status === "success" && data.result.length > 0) {
+        const headers = Object.keys(data.result[0]).filter((key, index) => index !== 1 && !["ลักษณะความแห้ง", "ลักษณะของผื่นแดง", "ลักษณะการแตกของผิว"].includes(key));
+        headers.splice(headers.indexOf("ระดับของการเกิดแผลบนผิวหน้า"), 0, "คะแนนรวมของการเกิดแผลบนใบหน้า");
+
+        const headerRow = document.createElement("tr");
+        headers.forEach(key => {
+          const th = document.createElement("th");
+          th.textContent = key;
+          headerRow.appendChild(th);
+        });
+        tableHeader.appendChild(headerRow);
+
+        data.result.forEach(row => {
+          const tr = document.createElement("tr");
+          const totalScore = row["ลักษณะความแห้ง"] + row["ลักษณะของผื่นแดง"] + row["ลักษณะการแตกของผิว"];
+
+          headers.forEach(key => {
+            const td = document.createElement("td");
+            td.textContent = key === "คะแนนรวมของการเกิดแผลบนใบหน้า" ? totalScore : row[key] || "";
+            tr.appendChild(td);
+          });
+          tableBody.appendChild(tr);
+        });
+      } else {
+        const tr = document.createElement("tr");
+        const td = document.createElement("td");
+        td.textContent = "ไม่พบข้อมูล";
+        td.colSpan = "100%";
+        tr.appendChild(td);
+        tableBody.appendChild(tr);
+      }
+    }
+
+    function logout() {
+      window.location.href = "login.html";
+    }
+  </script>
+</body>
+</html>

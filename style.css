@@ -1,0 +1,801 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway:400,700');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;    
+    font-family: Raleway, sans-serif;
+}
+
+body {
+    background: linear-gradient(90deg, #90d4ff, #0d9adc); /* พื้นหลังแบบไล่เฉดสี */
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.screen {
+    background: linear-gradient(90deg, #8deaf8, #1746b3);    
+    position: relative;    
+    height: 600px;
+    width: 360px;    
+    box-shadow: 0px 0px 24px #245382;
+    border-radius: 15px;
+}
+
+.screen__content {
+    z-index: 1;
+    position: relative;    
+    height: 100%;
+}
+
+.screen__background {        
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 0;
+    -webkit-clip-path: inset(0 0 0 0);
+    clip-path: inset(0 0 0 0);    
+}
+
+.screen__background__shape {
+    transform: rotate(45deg);
+    position: absolute;
+}
+
+.screen__background__shape1 {
+    height: 520px;
+    width: 520px;
+    background: #FFF;    
+    top: -50px;
+    right: 120px;    
+    border-radius: 0 72px 0 0;
+}
+
+.screen__background__shape2 {
+    height: 220px;
+    width: 220px;
+    background: #343cac;    
+    top: -172px;
+    right: 0;    
+    border-radius: 32px;
+}
+
+.screen__background__shape3 {
+    height: 540px;
+    width: 190px;
+    background: linear-gradient(270deg, #22508f, #60a0d3);
+    top: -24px;
+    right: 0;    
+    border-radius: 32px;
+}
+
+.screen__background__shape4 {
+    height: 400px;
+    width: 200px;
+    background: #22508f;    
+    top: 420px;
+    right: 50px;    
+    border-radius: 60px;
+}
+
+.login {
+    width: 320px;
+    padding: 30px;
+    padding-top: 156px;
+}
+
+.login__field {
+    padding: 20px 0px;    
+    position: relative;    
+}
+
+.login__icon {
+    position: absolute;
+    top: 30px;
+    color: #60a0d3;
+}
+
+.login__input {
+    border: none;
+    border-bottom: 2px solid #D1D1D4;
+    background: none;
+    padding: 10px;
+    padding-left: 24px;
+    font-weight: 700;
+    width: 75%;
+    transition: .2s;
+}
+
+.login__input:active,
+.login__input:focus,
+.login__input:hover {
+    outline: none;
+    border-bottom-color: #4879c2;
+}
+
+.login__submit {
+    background: #fff;
+    font-size: 14px;
+    margin-top: 30px;
+    padding: 16px 20px;
+    border-radius: 26px;
+    border: 1px solid #D4D3E8;
+    text-transform: uppercase;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    color: #479bd6;
+    box-shadow: 0px 2px 2px #4388ce;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.login__submit:active,
+.login__submit:focus,
+.login__submit:hover {
+    border-color: #479bd6;
+    outline: none;
+}
+
+.button__icon {
+    font-size: 24px;
+    margin-left: auto;
+    color: #479bd6;
+}
+
+/** Home Page **/
+.header-nav {
+    display: flex;
+    justify-content: flex-start;
+    background-color: #1E90FF;
+    padding: 10px 20px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.nav-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    padding: 10px 15px;
+    transition: background-color 0.3s;
+}
+
+.nav-btn:hover {
+    background-color: #4682B4;
+}
+
+.home-btn {
+    font-weight: bold; /* ทำให้คำว่า Home ตัวหนา */
+}
+
+.logout-btn {
+    background-color: #FF6347; /* สีปุ่ม Logout */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    position: absolute; /* ปุ่ม Log Out อยู่ที่ขวาบน */
+    top: 10px;
+    right: 20px;
+}
+
+.logout-btn:hover {
+    background-color: #FF4500;
+}
+
+.home-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(90deg, #90d4ff, #0d9adc);
+    margin-top: 60px;
+}
+
+.home-content {
+    text-align: center;
+    padding: 40px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 20px;
+    box-shadow: 0px 0px 24px rgba(0, 0, 0, 0.2);
+    width: 80%;
+    max-width: 900px;
+}
+
+.home-content h1 {
+    font-size: 36px;
+    color: #1E90FF;
+    margin-bottom: 20px;
+}
+
+.home-content p {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+/** Patient Type Page **/
+.patient-types-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(90deg, #90d4ff, #0d9adc);
+    margin-top: 60px;
+}
+
+.patient-types-content {
+    text-align: center;
+    padding: 40px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 20px;
+    box-shadow: 0px 0px 24px rgba(0, 0, 0, 0.2);
+    width: 80%;
+    max-width: 600px;
+}
+
+.patient-types-content h1 {
+    font-size: 36px;
+    color: #1E90FF;
+    margin-bottom: 20px;
+}
+
+.patient-type-buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.patient-type-btn {
+    background-color: #1E90FF;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 20px;
+    border-radius: 5px;
+    margin: 10px;
+    cursor: pointer;
+    width: 45%;
+    transition: background-color 0.3s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.patient-type-btn:hover {
+    background-color: #4682B4;
+}
+
+.patient-type-btn:focus {
+    outline: none;
+    background-color: #357ab7;
+}
+
+.patient-type-btn:active {
+    transform: scale(0.98);
+    background-color: #357ab7;
+}
+
+/* New patient buttons */
+#new-patient-options {
+    display: flex;
+    flex-direction: row;  /* ปรับให้ปุ่มเรียงในบรรทัดเดียว */
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.new-patient-option {
+    background-color: #c127f9;
+    color: white;
+    font-size: 18px;
+    border-radius: 5px;
+    padding: 12px 20px;
+    width: 60%;  /* ปรับขนาดให้พอดี */
+    transition: background-color 0.3s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.new-patient-option:hover {
+    background-color: #a548f6;
+}
+
+.new-patient-option:focus {
+    outline: none;
+    background-color: #6e388e;
+}
+
+.new-patient-option:active {
+    transform: scale(0.98);
+    background-color: #5e256e;
+}
+
+/* Header Navigation Bar */
+.header-nav {
+    display: flex;
+    justify-content: flex-start;
+    background-color: #1E90FF;
+    padding: 10px 20px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.nav-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    padding: 10px 15px;
+    transition: background-color 0.3s;
+}
+
+.nav-btn:hover {
+    background-color: #4682B4;
+}
+
+.logout-btn {
+    background-color: #FF6347;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+}
+
+.logout-btn:hover {
+    background-color: #FF4500;
+}
+
+/* เพิ่ม CSS สำหรับการค้นหาข้อมูลและตาราง */
+.search-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 60px;
+    width: 100%;
+    max-width: 800px;
+    padding: 20px;
+}
+
+.search-box {
+    text-align: center;
+    padding: 40px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 20px;
+    box-shadow: 0px 0px 24px rgba(0, 0, 0, 0.2);
+    width: 100%;
+}
+
+.search-box input {
+    padding: 10px;
+    margin: 10px;
+    width: 80%;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.search-box button {
+    padding: 10px 20px;
+    border-radius: 5px;
+    background-color: #1E90FF;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.search-box button:hover {
+    background-color: #4682B4;
+}
+
+.results-container {
+    margin-top: 20px;
+    width: 100%;
+    max-width: 800px;
+}
+
+table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+th {
+    background-color: #f4f4f4;
+}
+
+
+/* nursing activity */ 
+
+.nursing-activities-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(90deg, #90d4ff, #0d9adc);
+    margin-top: 60px;
+}
+
+.nursing-activities-content {
+    text-align: center;
+    padding: 40px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 20px;
+    box-shadow: 0px 0px 24px rgba(0, 0, 0, 0.2);
+    width: 80%;
+    max-width: 600px;
+}
+
+.nursing-activities-content h1 {
+    font-size: 36px;
+    color: #1E90FF;
+    margin-bottom: 20px;
+}
+
+.nursing-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.nursing-btn {
+    background-color: #00b012;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.nursing-btn:hover {
+    background-color: #008307;
+}
+
+.nursing-btn:focus {
+    outline: none;
+    background-color: #02a512;
+}
+
+.nursing-btn:active {
+    transform: scale(0.98);
+    background-color: #006f16;
+}
+
+.nursing-btn.high-risk {
+    background-color: #FF4500; /* สีแดง */
+}
+
+.nursing-btn.high-risk:hover {
+    background-color: #dc1414; /* สีแดงเข้ม */
+}
+
+.nursing-btn.high-risk:focus {
+    background-color: #d22929; /* สีแดงเข้มพิเศษ */
+}
+
+.nursing-btn.high-risk:active {
+    background-color: #b30303; /* สีแดงเข้มมาก */
+    transform: scale(0.98);
+}
+
+
+
+/* หน้า Nursing Low Risk */
+.nursing-low-risk-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(90deg, #90ffd3, #30eb8e);
+    margin-top: 60px;
+}
+
+.nursing-low-risk-content {
+    text-align: center;
+    padding: 40px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 20px;
+    box-shadow: 0px 0px 24px rgba(0, 0, 0, 0.2);
+    width: 80%;
+    max-width: 1200px;
+}
+
+.nursing-low-risk-content h1 {
+    font-size: 36px;
+    color: #03c113;
+    margin-bottom: 20px;
+}
+
+.nursing-high-risk-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(90deg, #ffbb90, #eb5930);
+    margin-top: 60px;
+}
+
+.nursing-high-risk-content {
+    text-align: center;
+    padding: 40px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 20px;
+    box-shadow: 0px 0px 24px rgba(0, 0, 0, 0.2);
+    width: 80%;
+    max-width: 1200px;
+}
+
+.nursing-high-risk-content h1 {
+    font-size: 36px;
+    color: #ff1e1e;
+    margin-bottom: 20px;
+}
+
+.icon-buttons1 {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.icon-btn1 {
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+    width: 45%;
+}
+
+.icon-btn1 img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.icon-btn1 p {
+    font-size: 18px;
+    color: #333;
+    font-weight: bold;
+}
+
+.icon-btn1:hover {
+    transform: scale(1.1); /* ทำให้ขยายเมื่อกด */
+}
+
+.icon-btn1:active {
+    transform: scale(0.98); /* ทำให้เล็กลงเมื่อคลิก */
+}
+
+/* ซ่อนไอคอนเพิ่มเติมในตอนเริ่มต้น */
+.additional-icons {
+    display: none;
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.additional-icons .icon-btn1 {
+    width: 30%;
+}
+
+
+/* ไอคอนเพิ่มเติม */
+.extra-icons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.icon-btn {
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+    width: 100px;
+}
+
+.icon-btn img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.icon-btn p {
+    font-size: 14px;
+    color: #333;
+}
+
+.icon-btn:hover {
+    transform: scale(1.1); /* ทำให้ขยายเมื่อกด */
+}
+
+.icon-btn:active {
+    transform: scale(0.98); /* ทำให้เล็กลงเมื่อคลิก */
+}
+
+
+
+/* สไตล์สำหรับกล่องข้อความ */
+.message-box {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #f0f8ff;
+    border-radius: 8px;
+    border: 1px solid #b0c4de;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 880px;  /* ขยายความกว้างของกล่องข้อความ */
+    width: 100%;  /* ให้กล่องข้อความยืดเต็มความกว้าง */
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;  /* จัดข้อความชิดซ้าย */
+}
+
+.message-box p {
+    font-size: 16px;
+    color: #333;
+    line-height: 1.6;
+    margin: 0; /* ให้ข้อความชิดขอบกล่อง */
+}
+
+.link-button {
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.link-button:hover {
+    background-color: #0056b3;
+}
+
+
+
+.manual-container {
+    text-align: center;
+    margin-top: 100px;
+}
+.manual-container h1 {
+    font-size: 2.5em; /* ขนาดตัวอักษร */
+    color: #333; /* สีของตัวอักษร */
+    margin-bottom: 20px; /* เว้นระยะห่างด้านล่างของหัวข้อ */
+    font-weight: bold;
+}
+.video-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0d4;
+    border-radius: 10px;
+    padding: 20px;
+    width: 80%;
+    margin: 0 auto;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    margin-bottom: 30px; /* เว้นระยะห่างจากส่วนอื่น ๆ */
+}
+video {
+    width: 100%;
+    border-radius: 5px;
+}
+
+/* ข้อความอธิบายใต้คลิป */
+.video-description {
+    font-size: 1.2em;
+    color: #555;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    max-width: 90%;
+}
+
+/* สไตล์สำหรับส่วน PDF */
+.pdf-downloads {
+    margin-top: 20px;
+    text-align: left;
+    width: 100%;
+}
+.pdf-downloads h2 {
+    font-size: 2em;
+    color: #333;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.pdf-downloads ul {
+    list-style-type: none;
+    padding: 0;
+}
+.pdf-downloads li {
+    margin-bottom: 10px;
+}
+.pdf-downloads a {
+    font-size: 1.2em;
+    color: #007BFF;
+    text-decoration: none;
+}
+.pdf-downloads a:hover {
+    text-decoration: underline;
+}
+
+
+.contact-container {
+    text-align: center;
+    margin-top: 50px;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.contact-container h1 {
+    font-size: 2.5em;
+    color: #333;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+/* กรอบสำหรับข้อมูลติดต่อ */
+.contact-info {
+    text-align: left;
+    font-size: 1.2em;
+    margin-bottom: 30px;
+    padding: 20px;
+    background-color: #f9f9f9; /* พื้นหลังเบาๆ */
+    border: 2px solid #ddd; /* ขอบกรอบ */
+    border-radius: 10px; /* มุมโค้ง */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* เงาเล็กน้อย */
+}
+
+.contact-info h2 {
+    font-size: 2em;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.contact-info ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.contact-info li {
+    margin-bottom: 10px;
+}
+
+.contact-info strong {
+    color: #007BFF;
+}

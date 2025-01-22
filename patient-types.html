@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ประเภทผู้ป่วย</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="ICON" href="home/Nursing_KKU_Thai_Symbol.svg.png">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <!-- Header navigation bar -->
+    <div class="header-nav">
+        <button class="nav-btn home-btn" onclick="location.href='home.html'">Home</button> <!-- Home button -->
+        <button class="nav-btn" onclick="location.href='patient-types.html'">ข้อมูลผู้ป่วย</button>
+        <button class="logout-btn" onclick="logout()">Log Out</button> <!-- Log Out button -->
+    </div>
+
+    <!-- Main content for patient types -->
+    <div class="patient-types-container">
+        <div class="patient-types-content">
+            <h1>เลือกประเภทผู้ป่วย</h1>
+            <div class="patient-type-buttons">
+                <button class="patient-type-btn" id="new-patient-btn" onclick="toggleNewPatientButtons()">ข้อมูลผู้ป่วยแรกรับ</button>
+                <button class="patient-type-btn" id="old-patient-btn" onclick="location.href='patient-search.html'">ข้อมูลผู้ป่วยทั้งหมด</button>
+            </div>
+            <!-- Hidden buttons that will appear when 'ผู้ป่วยใหม่' is clicked -->
+            <div id="new-patient-options" style="display: none;">
+                <button class="patient-type-btn new-patient-option" onclick="location.href='https://forms.gle/FkpEn7bQsxTCusaA9'">กรอกข้อมูลผู้ป่วยแรกรับ</button>
+                <button class="patient-type-btn new-patient-option" onclick="location.href='https://forms.gle/pY8zAAbUjMitZTqe9'">แบบประเมินความเสี่ยง</button>
+                <button class="patient-type-btn new-patient-option" onclick="location.href='https://forms.gle/ntaqn3U8WbBAZDEV6'">แบบประเมินการเกิดแผล</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Log out function
+        function logout() {
+            window.location.href = "login.html"; // ไปยังหน้า Login
+        }
+
+        // Function to toggle visibility of new patient buttons
+        function toggleNewPatientButtons() {
+            var options = document.getElementById('new-patient-options');
+            if (options.style.display === 'none') {
+                options.style.display = 'block'; // แสดงปุ่ม
+            } else {
+                options.style.display = 'none'; // ซ่อนปุ่ม
+            }
+        }
+    </script>
+</body>
+</html>

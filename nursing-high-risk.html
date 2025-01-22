@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>การพยาบาลสำหรับกลุ่มเสี่ยงสูง</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script> <!-- โหลดไอคอนจาก FontAwesome -->
+    <link rel="ICON" href="home/Nursing_KKU_Thai_Symbol.svg.png">
+</head>
+<body>
+    <div class="header-nav">
+        <button class="nav-btn home-btn" onclick="location.href='home.html'">Home</button>
+        <button class="nav-btn" onclick="location.href='nursing-activities.html'">กิจกรรมการพยาบาล</button>
+        <button class="logout-btn" onclick="logout()">Log Out</button>
+    </div>
+
+    <!-- Main Content -->
+    <div class="nursing-high-risk-container">
+        <div class="nursing-high-risk-content">
+            <h1>การพยาบาลสำหรับกลุ่มเสี่ยงสูง</h1>
+            <div class="icon-buttons1">
+                <!-- ไอคอนแรก -->
+                <div class="icon-btn1" onclick="showIcons('icon1')">
+                    <img src="png/ax78p3g88.png" alt="Icon 1"> <!-- ใส่ path ของไอคอนในโฟลเดอร์ -->
+                    <p>Assessment</p>
+                </div>
+                <!-- ไอคอนที่สอง -->
+                <div class="icon-btn1" onclick="showIcons('icon2')">
+                    <img src="png/pngegg.png" alt="Icon 2"> <!-- ใส่ path ของไอคอนในโฟลเดอร์ -->
+                    <p>Care Bundle for POFPUs</p>
+                </div>
+            </div>
+
+            <!-- ไอคอนเพิ่มเติมสำหรับ icon1 -->
+            <div class="extra-icons icon1" style="display: none;">
+                <div class="icon-btn" onclick="showMessage(30)">
+                    <img src="png/pngwing.com.png" alt="Icon 3">
+                    <p>ประเมินความเสี่ยง</p>
+                </div>
+                <div class="icon-btn" onclick="showMessage(40)">
+                    <img src="png/2436ef3f0fe73eccb95ee87a3bf4e477.png" alt="Icon 4">
+                    <p>ความรู้สึกตัว</p>
+                </div>
+                <div class="icon-btn" onclick="showMessage(50)">
+                    <img src="png/de579dd8c4b2ee723c403c520444c5f6.png" alt="Icon 5">
+                    <p>ความปวด</p>
+                </div>
+                <div class="icon-btn" onclick="showMessage(60)">
+                    <img src="png/pngegg (1).png" alt="Icon 6">
+                    <p>ประวัติการแพ้</p>
+                </div>
+                <div class="icon-btn" onclick="showMessage(70)">
+                    <img src="png/transparent-fever-icon-medical-icon-5fb42656099d97.8155937116056418140394.png" alt="Icon 7">
+                    <p>ประเมินไข้</p>
+                </div>
+                <div class="icon-btn" onclick="showMessage(80)">
+                    <img src="png/kisspng-medical-ventilator-artificial-ventilation-breathin-5beb90deb4a704.00875433154216470274.png" alt="Icon 8">
+                    <p>ความพร้อมหย่าเครื่องช่วยหายใจ</p>
+                </div>
+            </div>
+
+            <!-- ไอคอนเพิ่มเติมสำหรับ icon2 -->
+            <div class="extra-icons icon2" style="display: none;">
+                <div class="icon-btn" onclick="showMessage(90)">
+                    <img src="png/pngegg (2).png" alt="Icon 9">
+                    <p>ทำความสะอาดปาก</p>
+                </div>
+                <div class="icon-btn" onclick="showMessage(100)">
+                    <img src="png/pngegg10.png" alt="Icon 10">
+                    <p>ย้ายตำแหน่งท่อช่วยหายใจ</p>
+                </div>
+                <div class="icon-btn" onclick="showMessage(110)">
+                    <img src="png/kisspng-medical-equipment-medical-ventilator-mechanical-ve-5b21fee4258b56.7546402215289545961538.png" alt="Icon 11">
+                    <p>พยุงสายท่อช่วยหายใจ</p>
+                </div>
+                <div class="icon-btn" onclick="showMessage(120)">
+                    <img src="png/transparent-tooth-lips-meter-font-60a383187efc66.4479690616213286645201.png" alt="Icon 12">
+                    <p>ส่งเสริมความชุ่มชื้นของผิวหนัง</p>
+                </div>
+                <div class="icon-btn" onclick="showMessage(130)">
+                    <img src="png/pngegg (3).png" alt="Icon 13">
+                    <p>ส่งเสริมการหายของแผล</p>
+                </div>
+                <div class="icon-btn" onclick="showMessage(140)">
+                    <img src="png/303d3dbb18543c736cda7a0aca281d53.png" alt="Icon 14">
+                    <p>ส่งเสริมการได้รับสารอาหาร</p>
+                </div>
+                <div class="icon-btn" onclick="showMessage(150)">
+                    <img src="png/medical-05_icon-icons.com_73942.png" alt="Icon 15">
+                    <p>Wearing Vasopressors</p>
+                </div>
+                <div class="icon-btn" onclick="showMessage(160)">
+                    <img src="png/e84ec6a213bd194154e92ef84709691f.png" alt="Icon 16">
+                    <p>ป้องกันการดึงท่อช่วยหายใจ</p>
+                </div>
+                <div class="icon-btn" onclick="showMessage(170)">
+                    <img src="png/169babbbeb7c1324990853f85b48d3f7.png" alt="Icon 17">
+                    <p>ประเมินและบันทึกผลการพยาบาลซ้ำ</p>
+                </div>
+            </div>
+
+            <!-- กล่องข้อความที่จะแสดงเมื่อกดไอคอน -->
+            <div class="message-box" id="message-box" style="display: none;">
+                <p id="message-text">ข้อความที่กำหนดเอง</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function logout() {
+            window.location.href = "login.html"; // ไปยังหน้า Login
+        }
+
+        function showIcons(iconType) {
+            if (iconType === 'icon1') {
+                // แสดงหรือซ่อนไอคอนเพิ่มเติมสำหรับ icon1
+                const icon1Extras = document.querySelector('.icon1');
+                const icon2Extras = document.querySelector('.icon2');
+                icon1Extras.style.display = icon1Extras.style.display === 'none' ? 'flex' : 'none';
+                icon2Extras.style.display = 'none';
+                // ซ่อนข้อความเมื่อเปลี่ยนไปกดไอคอน 1
+                document.getElementById('message-box').style.display = 'none';
+            } else if (iconType === 'icon2') {
+                // แสดงหรือซ่อนไอคอนเพิ่มเติมสำหรับ icon2
+                const icon1Extras = document.querySelector('.icon1');
+                const icon2Extras = document.querySelector('.icon2');
+                icon2Extras.style.display = icon2Extras.style.display === 'none' ? 'flex' : 'none';
+                icon1Extras.style.display = 'none';
+                // ซ่อนข้อความเมื่อเปลี่ยนไปกดไอคอน 2
+                document.getElementById('message-box').style.display = 'none';
+            }
+        }
+
+        function showMessage(iconId) {
+            // ซ่อนกล่องข้อความเก่า
+            document.getElementById('message-box').style.display = 'none';
+            // กำหนดข้อความใหม่ตามไอคอนที่เลือก
+            const messageBox = document.getElementById('message-box');
+            const messageText = document.getElementById('message-text');
+
+            switch (iconId) {
+                case 30:
+                    messageText.innerHTML = `
+                        <p>ประเมินความเสี่ยงต่อการเกิดแผลบริเวณปาก และใบหน้าในผู้ป่วยใส่ท่อช่วยหายใจทางปาก ครั้งที่ 1 เมื่อแรกรับเพื่อจำแนกกลุ่มผู้ป่วย<br>• คะแนน 0 – 5 หมายถึง กลุ่มเสี่ยงต่ำ<br>• คะแนน 6 – 10 หมายถึง กลุ่มเสี่ยงสูง<br>จากนั้นให้การดูแลตามชุดการดูแล Care Bundle for POFPUs</p>
+                        <button onclick="location.href='https://forms.gle/pY8zAAbUjMitZTqe9'" class="link-button">ไปยังหน้าประเมินความเสี่ยง</button> `;
+                    break;
+
+                case 40:
+                    messageText.innerHTML = `
+                        <p><b>ประเมินระดับความรู้สึกตัวด้วย RASS score เมื่อแรกรับเวร และทุก 4 ชม. ถ้าคะแนน ≥ 1 และปฏิบัติ ดังนี้:</b></p> 
+                        <p>• ประเมินสาเหตุของการดิ้น หรือ ไม่ให้ความร่วมมือของผู้ป่วย พร้อมให้การดูแลเพื่อแก้ไขสาเหตุ</p>
+                        <p>• แจ้งเหตุผล และความจำเป็นของการใส่ท่อช่วยหายใจ รวมถึงการรักษาพยาบาลอื่น ๆ ให้ผู้ป่วยรับทราบ เพื่อขอความร่วมมือในการพยาบาล</p>
+                        <p>• รายงานแพทย์พิจารณาให้ยานอนหลับ เพื่อควบคุมอาการให้สงบ</p> `;
+                    break;
+
+                case 50:
+                    messageText.innerHTML = `
+                        <p><b>ประเมินความปวด และความไม่สุขสบายทุก 4 ชม. เวลา 2, 6, 10, 14, 18, 22 น. และบันทึกคะแนนความปวดใน Nurse note</b></p>
+                        <p><b>สอบถามคะแนนความปวด ดังนี้</b></p> 
+                        <p>• ผู้ป่วยที่สามารถบอกระดับความปวดได้ด้วยตัวเอง ใช้แบบประเมิน Numeric rating scale (NRS)</p>
+                        <p>• ผู้ป่วยที่ไม่สามารถบอกความปวดเองได้ ใช้ แบบประเมิน Critical care pain observation tool (CPOT)</p>
+                        <p>• สอบถามอาการ หรือ ความไม่สุขสบายของผู้ป่วยหลังให้การพยาบาลทุกครั้ง</p> `;                   
+                    break;
+
+                case 60:
+                    messageText.innerHTML = `
+                        <p>ประเมิน และสอบถามประวัติการแพ้ยา อาหาร รวมถึง พลาสเตอร์ กาวติดอุปกรณ์การแพทย์ หรือ น้ำยาบ้วนปาก</p>
+                        <p><b>หมายเหตุ:</b> ประเมินในแรกรับ และบันทึกใน Nurse note</p> `;
+                    break;
+
+                case 70:
+                    messageText.innerHTML = `
+                        <p><b>ประเมินภาวะไข้และดูแลเพื่อลดไข้</b></p>
+                        <p><b>วัดไข้ทุก 4 ชม. กรณีถ้ามีไข้ ปฏิบัติ ดังนี้</b></p> 
+                        <p>• ดูแลจัดสิ่งแวดล้อมเพื่อระบายอากาศ และดูแลเช็ดตัวลดไข้ ด้วย เทคนิค Tepid Sponge</p>
+                        <p>• ดูแลให้ยาลดไข้ ในกรณีไม่มีข้อห้าม</p>
+                        <p>• รายงานแพทย์เพื่อประเมินอาการ และหาสาเหตุ</p>
+                        <p>• ถ้าไข้จากการติดเชื้อ ดูแลให้ได้รับยาปฏิชีวนะตามแผนการรักษา</p> `;
+                    break;
+
+                case 80:
+                    messageText.innerHTML = `
+                        <p><b>ประเมินความพร้อมในการหย่าเครื่องช่วยหายใจและท่อช่วยหายใจ</b></p>
+                        <p>โดยใช้แบบประเมิน MICU2 weaning protocol วันละ 1 ครั้ง เวลา 6.00 น. และรายงานแพทย์เพื่อพิจารณาการหย่าเครื่องช่วยหายใจ</p> `;
+                    break;
+
+                case 90:
+                    messageText.innerHTML = `
+                        <p><b>การทำความสะอาดช่องปาก</b> ก่อนดูดเสมหะทุก 4 ชม. เวลา 2, 6, 10, 14, 18, 22 น.</p>
+                        <p>• จัดท่าศีรษะสูง 30-45 องศา ตะแคงหน้าไปด้านใดด้านหนึ่ง</p>
+                        <p>• ใช้Normal saline ในการบ้วนปาก</p>`;
+                    break;
+
+                case 100:
+                    messageText.innerHTML = `
+                        <p><b>ย้ายตำแหน่งท่อช่วยหายใจ ทุก 12 ชม.</b></p>
+                        <br> 
+                        <p><b>การแกะลอกพลาสเตอร์</b></p>
+                        <p>1) ใช้สำลีชุบ Normal saline หรือ baby oil ทาให้ชุ่มทั่วพลาสเตอร์ทิ้งไว้ 1 นาที</p>
+                        <p>2) ลอกพลาสเตอร์ด้านที่พันรอบท่อช่วยหายใจออกด้วยความระมัดระวัง โดยใช้มืออีกข้างจับพยุงท่อช่วยหายใจให้อยู่กับที่</p>
+                        <p>3) ลอกพลาสเตอร์บริเวณปาก และใบหน้าผู้ป่วย โดยใช้นิ้วชี้ และนิ้วกลางของมือข้างหนึ่งกดเบาๆ เพื่อตรึงผิวหนังแล้วใช้มืออีกข้างค่อย ๆ ลอกพลาสเตอร์ออกอย่างเบามือ นุ่มนวลการลอกพลาสเตอร์ให้ทำมุมน้อยที่สุดกับผิวหนัง (ผู้ช่วยพยุงท่อช่วยหายใจไม่ให้เลื่อนไปมา)</p>
+                        <br>
+                        <p><b>ย้ายตำแหน่งท่อช่วยหายใจ และวางท่อช่วยหายใจ</b></p>
+                        <p>1) ใช้มือจับท่อช่วยหายใจค่อย ๆ ย้ายท่อช่วยหายใจจากมุมปากด้านหนึ่ง ไปยังอีกด้าน</p>
+                        <p>2) จัดตำแหน่งให้ท่อช่วยหายใจอยู่ห่างจากมุมปาก ประมาณ 0.5 ซม.</p>
+                        <p>3) ทำการตรวจสอบตำแหน่งท่อช่วยหายใจ โดยประเมินจากขีดระดับของท่อช่วยหายใจ ไม่ให้เลื่อนเข้าหรือออกจากตำแหน่งตามแผนการรักษาของแพทย์ และผู้ช่วยจับประคองท่อช่วยหายใจ</p>
+                        <p>4) ติดยึดท่อช่วยหายใจให้อยู่ในตำแหน่งตามแผนการรักษา</p>
+                        <br>
+                        <p><b>ติดพลาสเตอร์ยึดท่อช่วยหายใจ</b></p>
+                        <p>1) เตรียมพลาสเตอร์ชนิดผ้า (Multi pore Dry Surgical Tape) ตัดเป็นรูปตัว Y ความยาว 5 นิ้ว จำนวน 2 ชิ้น</p>
+                        <p>2) ใช้กระดาษทิชชูซับผิวหนังบริเวณใบหน้า และบริเวณมุมปากเพื่อลดความเปียกชื้น และความมันบริเวณใบหน้า</p>
+                        <p>3) ใช้พลาสเตอร์ชิ้นที่ 1 ติดส่วนต้นของพลาสเตอร์ลงบนใบหน้าโดยให้รอยแยกของพลาส เตอร์อยู่ชิดมุมปากข้างที่วางท่อช่วยหายใจ และใช้ส่วนปลายที่ 1 ของพลาสเตอร์ติดลงบนผิวเหนือริมฝีปากด้านบนให้แนบสนิท และใช้ส่วนปลายอีกด้านของพลาสเตอร์ติดพันรอบท่อช่วยหายใจ</p>
+                        <p>4) ใช้พลาสเตอร์ ชิ้นที่ 2 ติดส่วนต้นทับลงบนพลาสเตอร์ ชิ้นที่ 1 ให้รอยแยกของพลาสเตอร์อยู่ชิดมุมปากใช้ปลายด้านที่ 1 ติดลงบนผิวบริเวณริมฝีปากด้านล่าง ให้แนบสนิท และใช้ปลายอีกด้าน ติดพันรอบท่อช่วยหายใจ โดยพับมุมตรงปลายพลาสเตอร์เพื่อให้ง่ายต่อการแกะลอกพลาสเตอร์ครั้งต่อไป</p>
+                        <p>5) สอบถามอาการ หรือ ความไม่สุขสบายของผู้ป่วย</p> `;
+                    break;
+
+                case 110:
+                    messageText.innerHTML = `
+                        <p>ใช้ Ventilator arm พยุงสายส่งก๊าซ เพื่อรองรับน้ำหนัก และจัดตำแหน่งไม่ให้เกิดการกดทับบนตัวผู้ป่วย</p> `;
+                    break;
+
+                case 120:
+                    messageText.innerHTML = `
+                        <p><b>ส่งเสริมความชุ่มชื้นของผิวหนังริมฝีปากและใบหน้าบริเวณแก้มทุกครั้งหลังทำความสะอาดช่องปาก</b></p>
+                        <p>1) ใช้กระดาษทิชชู หรือ ผ้าขนหนูอ่อนนุ่มซับบริเวณปาก และใบหน้าให้แห้ง</p>
+                        <p>2) ทาปิโตรเลียมเจล บริเวณริมฝีปากทุกราย</p>`;
+                    break;
+
+                case 130:
+                    messageText.innerHTML = `
+                        <p><b>ส่งเสริมการหายของแผลบริเวณปาก หรือ ใบหน้า</b></p>
+                        <p>• ทำความสะอาดแผลด้วย สำลีชุบ Normal saline ทุกครั้งหลังทำความสะอาดช่องปาก และรายงานแพทย์ร่วมประเมินอาการเพื่อให้การรักษา</p>`;
+                    break;
+
+                case 140:
+                    messageText.innerHTML = `
+                        <p><b>ส่งเสริมการได้รับสารอาหารอย่างเพียงพอ ในกรณีผู้ป่วยมีระดับ albumin ต่ำกว่า 3.3 mg/dL</b></p>
+                        <p>1) ติดตาม และบันทึกระดับ albumin ใน Nurse note</p>
+                        <p>2) รายงานแพทย์ พิจารณาปรับสารอาหารให้เหมาะสมกับผู้ป่วย</p>
+                        <p>3) ดูแล Feeding อาหารให้ผู้ป่วยตามแผนการรักษา</p>`;
+                    break;
+
+                case 150:
+                    messageText.innerHTML = `
+                        <p><b>การพยาบาลเพื่อส่งเสริมการลดยากระตุ้นการหดหลอดเลือด (Weaning vasopressors)</b></p>
+                        <p>1) ประเมินความดันโลหิตทุก 1 ชม. ถ้าผู้ป่วยความดันคงที่ หรือ อยู่ในเกณฑ์ปกติ ดูแลปรับลดอัตราการให้ยาตามแผนการรักษาของแพทย์</p>
+                        <p>2) รายงานแพทย์เมื่อผู้ป่วยหมดข้อบ่งชี้ในการได้รับยากระตุ้นการหดหลอดเลือด</p>`;
+                    break;
+
+                case 160:
+                     messageText.innerHTML = `
+                        <p><b>ป้องกันการดึงท่อช่วยหายใจ</b></p>
+                        <p>ประเมินระดับความรู้สึกตัว RASS score ถ้าคะแนน ≥ 1+ ปฏิบัติ ดังนี้</p> 
+                        <p>• ประเมินสาเหตุของการดิ้น หรือ ไม่ให้ความร่วมมือของผู้ป่วย พร้อมให้การดูแลเพื่อแก้ไขสาเหตุ</p>
+                        <p>• แจ้งเหตุผล และความจำเป็นของการใส่ท่อช่วยหายใจ รวมถึงการรักษาพยาบาลอื่นๆ ให้ผู้ป่วยรับทราบ เพื่อขอความร่วมมือในการพยาบาล</p>
+                        <p>• ผูกยึดข้อมือผู้ป่วยทั้ง 2 ข้าง พร้อมแจ้งความจำเป็นในการผูกยึด</p>
+                        <p>• รายงานแพทย์พิจารณาให้ยานอนหลับ เพื่อควบคุมอาการ</p> `;
+                    break;
+
+                case 170:
+                    messageText.innerHTML = `
+                        <p>ประเมินซ้ำทุก 8 ชม. เวลา 2, 10, 18 น..</p>
+                        <p>บันทึกผลการพยาบาลทุก 8 ชม. เวลา 6, 14, 22 น.</p>`;
+                    break;
+
+                default:
+                    messageText.innerText = "ข้อความที่กำหนดเอง";
+                    break;
+            }
+
+            // แสดงกล่องข้อความ
+            messageBox.style.display = 'block';
+        }
+
+        
+    </script>
+</body>
+</html>
