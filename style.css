@@ -151,6 +151,24 @@ body {
     color: #479bd6;
 }
 
+.logout-btn {
+    background-color: #FF6347; /* สีปุ่ม Logout */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    position: absolute; /* ปุ่ม Log Out อยู่ที่ขวาบน */
+    top: 10px;
+    right: 20px;
+}
+
+.logout-btn:hover {
+    background-color: #FF4500;
+}
+
 /** Home Page **/
 .header-nav {
     display: flex;
@@ -182,23 +200,6 @@ body {
     font-weight: bold; /* ทำให้คำว่า Home ตัวหนา */
 }
 
-.logout-btn {
-    background-color: #FF6347; /* สีปุ่ม Logout */
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    position: absolute; /* ปุ่ม Log Out อยู่ที่ขวาบน */
-    top: 10px;
-    right: 20px;
-}
-
-.logout-btn:hover {
-    background-color: #FF4500;
-}
 
 .home-container {
     display: flex;
@@ -351,87 +352,6 @@ body {
     background-color: #4682B4;
 }
 
-.logout-btn {
-    background-color: #FF6347;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    position: absolute;
-    top: 10px;
-    right: 20px;
-}
-
-.logout-btn:hover {
-    background-color: #FF4500;
-}
-
-/* เพิ่ม CSS สำหรับการค้นหาข้อมูลและตาราง */
-.search-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-top: 60px;
-    width: 100%;
-    max-width: 800px;
-    padding: 20px;
-}
-
-.search-box {
-    text-align: center;
-    padding: 40px;
-    background-color: rgba(255, 255, 255, 0.8);
-    border-radius: 20px;
-    box-shadow: 0px 0px 24px rgba(0, 0, 0, 0.2);
-    width: 100%;
-}
-
-.search-box input {
-    padding: 10px;
-    margin: 10px;
-    width: 80%;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-}
-
-.search-box button {
-    padding: 10px 20px;
-    border-radius: 5px;
-    background-color: #1E90FF;
-    color: white;
-    border: none;
-    cursor: pointer;
-}
-
-.search-box button:hover {
-    background-color: #4682B4;
-}
-
-.results-container {
-    margin-top: 20px;
-    width: 100%;
-    max-width: 800px;
-}
-
-table {
-    width: 100%;
-    margin-top: 20px;
-    border-collapse: collapse;
-}
-
-th, td {
-    padding: 10px;
-    text-align: left;
-    border: 1px solid #ddd;
-}
-
-th {
-    background-color: #f4f4f4;
-}
 
 
 /* nursing activity */ 
