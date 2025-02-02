@@ -11,25 +11,47 @@
 <body>
     <!-- Header navigation bar -->
     <div class="header-nav">
-        <button class="nav-btn home-btn" onclick="location.href='home.html'">Home</button> <!-- Home button -->
+        <button class="nav-btn home-btn" onclick="location.href='home.html'">Home</button>
         <button class="nav-btn" onclick="location.href='patient-types.html'">ข้อมูลผู้ป่วย</button>
         <button class="nav-btn" onclick="location.href='nursing-activities.html'">กิจกรรมการพยาบาล</button>
         <button class="nav-btn" onclick="location.href='nursing-manual.html'">คู่มือสำหรับพยาบาล</button>
         <button class="nav-btn" onclick="location.href='contact.html'">ช่องทางการติดต่อ</button>
-        <button class="logout-btn" onclick="logout()">Log Out</button> <!-- Log Out button -->
+        <button class="logout-btn" onclick="logout()">Log Out</button>
     </div>
 
-    <!-- Main content (Empty for now) -->
+    <!-- Main content with rectangles -->
     <div class="home-container">
-        <div class="home-content">
-            <!-- Content space left empty -->
-            <p>ส่วนตรงกลางว่างไว้ให้ใส่เนื้อหาภายหลัง</p> <!-- ใส่เนื้อหาหรือรูปภาพที่ต้องการในภายหลัง -->
+        <div class="rectangle"></div>
+        <div class="overlay-rectangle">
+            <p class="overlay-text">CARE BUNDLE FOR POFPUS</p>
+            <p class="overlay-text2">การดูแลเพื่อป้องกันแผลบริเวณปาก และใบหน้า</p>
+        </div>
+
+        <div class="extra-rectangle"></div>
+        <div class="extra-rectangle2"></div>
+        <div class="image-rectangle">
+            <img src="png/11ff09a8-875c-4d67-826d-fdfe3e507c15.jpg" alt="รูปภาพตัวอย่าง" class="image-content">
+        </div>
+
+        <div class="new-textbox">
+             <p class="textbox-content">แผลบริเวณปาก และใบหน้าในผู้ป่วยใส่ท่อช่วยหายใจ</p>
+             <p class="textbox-content">พวกเราป้องกันได้ ด้วย Care Bundle for POFPUs</p>
+        </div>
+
+        <div class="image-box-below-textbox1">
+            <img src="home/Nursing_KKU_Thai_Symbol.svg.png" alt="รูปภาพตัวอย่าง" class="image-content-below">
+        </div>
+        <div class="image-box-below-textbox2">
+            <img src="home/md-thai-emblem_300x300.png" alt="รูปภาพตัวอย่าง" class="image-content-below">
+        </div>
+        <div class="image-box-below-textbox3">
+            <img src="home/bd489b58-574b-452a-a7a8-217937c15324-Photoroom.png" alt="รูปภาพตัวอย่าง" class="image-content-below">
         </div>
     </div>
 
     <script>
         function logout() {
-            window.location.href = "login.html"; // ไปยังหน้า Login
+            window.location.href = "login.html";
         }
     </script>
 </body>

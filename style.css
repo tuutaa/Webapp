@@ -151,13 +151,15 @@ body {
     color: #479bd6;
 }
 
+
+
 .logout-btn {
     background-color: #FF6347; /* สีปุ่ม Logout */
     color: white;
     border: none;
     padding: 10px 20px;
     font-size: 16px;
-    border-radius: 5px;
+    border-radius: 20px;
     cursor: pointer;
     transition: background-color 0.3s;
     position: absolute; /* ปุ่ม Log Out อยู่ที่ขวาบน */
@@ -168,6 +170,8 @@ body {
 .logout-btn:hover {
     background-color: #FF4500;
 }
+
+
 
 /** Home Page **/
 .header-nav {
@@ -190,10 +194,12 @@ body {
     cursor: pointer;
     padding: 10px 15px;
     transition: background-color 0.3s;
+    border-radius: 20px;
 }
 
 .nav-btn:hover {
     background-color: #4682B4;
+    border-radius: 20px;
 }
 
 .home-btn {
@@ -201,36 +207,172 @@ body {
 }
 
 
+/*Homepage ส่วนข้อมูลตรงกลาง*/
 .home-container {
     display: flex;
     justify-content: center;
-    align-items: center;
     min-height: 100vh;
     background: linear-gradient(90deg, #90d4ff, #0d9adc);
-    margin-top: 60px;
-}
-
-.home-content {
-    text-align: center;
-    padding: 40px;
-    background-color: rgba(255, 255, 255, 0.8);
-    border-radius: 20px;
-    box-shadow: 0px 0px 24px rgba(0, 0, 0, 0.2);
-    width: 80%;
-    max-width: 900px;
-}
-
-.home-content h1 {
-    font-size: 36px;
-    color: #1E90FF;
+    margin-top: 80px;
     margin-bottom: 20px;
 }
 
-.home-content p {
-    font-size: 18px;
-    color: #333;
-    margin-bottom: 30px;
+.rectangle {
+    width: 1350px;
+    height: 1000px;
+    background-color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 0px 24px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
 }
+
+.overlay-rectangle {
+    width: 1000px;
+    height: 200px;
+    background: linear-gradient(135deg, #3b90ff, #4eccfa);
+    position: absolute;
+    left: 3%;
+    top: 120px;
+    border-radius: 20px;
+    box-shadow: 0px 0px 24px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+}
+
+.overlay-text {
+    font-size: 60px;
+    font-weight: bold;
+    color: #ffffff;
+    margin: 10px 0;
+}
+
+.overlay-text2 {
+    font-size: 20px;
+    font-weight: bold;
+    color: #000000;
+    margin: 10px 0;
+}
+
+
+.extra-rectangle {
+    width: 700px;
+    height: 150px;
+    background: #87dfff;
+    position: absolute;
+    right: 5.6%;
+    top: 800px;
+    border-radius: 0px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+}
+
+.extra-rectangle2 {
+    width: 300px;
+    height: 200px;
+    background: #43adf4;
+    position: absolute;
+    right: 8%;
+    top: 400px;
+    border-radius: 0px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+}
+
+.image-rectangle {
+    width: 500px;
+    height: 400px;
+    background: #fff;
+    position: absolute;
+    right: 10%;
+    top: 450px;
+    border-radius: 0px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.image-content {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.new-textbox {
+    width: 550px;
+    height: 150px;
+    background: #ffffff;
+    position: absolute;
+    left: 15%;
+    top: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
+    text-align: left;
+    padding: 20px;
+}
+
+.textbox-content {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    margin: 5px 0;
+}
+
+.image-box-below-textbox1 {
+    width: 100px;
+    height: 100px;
+    background: #fff;
+    position: absolute;
+    left: 10%;
+    top: 930px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.image-box-below-textbox2 {
+    width: 100px;
+    height: 100px;
+    background: #fff;
+    position: absolute;
+    left: 20%;
+    top: 930px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.image-box-below-textbox3 {
+    width: 100px;
+    height: 100px;
+    background: #fff;
+    position: absolute;
+    left: 30%;
+    top: 930px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+
+.image-content-below {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+
 
 /** Patient Type Page **/
 .patient-types-container {
@@ -254,7 +396,7 @@ body {
 
 .patient-types-content h1 {
     font-size: 36px;
-    color: #1E90FF;
+    color: #000000;
     margin-bottom: 20px;
 }
 
@@ -270,7 +412,7 @@ body {
     border: none;
     padding: 15px 30px;
     font-size: 20px;
-    border-radius: 5px;
+    border-radius: 50px;
     margin: 10px;
     cursor: pointer;
     width: 45%;
@@ -292,6 +434,8 @@ body {
     background-color: #357ab7;
 }
 
+
+
 /* New patient buttons */
 #new-patient-options {
     display: flex;
@@ -304,9 +448,9 @@ body {
     background-color: #c127f9;
     color: white;
     font-size: 18px;
-    border-radius: 5px;
+    border-radius: 50px;
     padding: 12px 20px;
-    width: 60%;  /* ปรับขนาดให้พอดี */
+    width: 50%;  /* ปรับขนาดให้พอดี */
     transition: background-color 0.3s;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
@@ -323,33 +467,6 @@ body {
 .new-patient-option:active {
     transform: scale(0.98);
     background-color: #5e256e;
-}
-
-/* Header Navigation Bar */
-.header-nav {
-    display: flex;
-    justify-content: flex-start;
-    background-color: #1E90FF;
-    padding: 10px 20px;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    left: 0;
-    z-index: 1000;
-}
-
-.nav-btn {
-    background: none;
-    border: none;
-    color: white;
-    font-size: 18px;
-    cursor: pointer;
-    padding: 10px 15px;
-    transition: background-color 0.3s;
-}
-
-.nav-btn:hover {
-    background-color: #4682B4;
 }
 
 
@@ -377,7 +494,7 @@ body {
 
 .nursing-activities-content h1 {
     font-size: 36px;
-    color: #1E90FF;
+    color: #000000;
     margin-bottom: 20px;
 }
 
@@ -393,7 +510,7 @@ body {
     border: none;
     padding: 15px 30px;
     font-size: 20px;
-    border-radius: 5px;
+    border-radius: 50px;
     cursor: pointer;
     transition: background-color 0.3s;
 }
@@ -411,6 +528,8 @@ body {
     transform: scale(0.98);
     background-color: #006f16;
 }
+
+
 
 .nursing-btn.high-risk {
     background-color: #FF4500; /* สีแดง */
@@ -608,14 +727,14 @@ body {
 }
 
 
-
+/*หน้าคู่มือ*/
 .manual-container {
     text-align: center;
     margin-top: 100px;
 }
 .manual-container h1 {
     font-size: 2.5em; /* ขนาดตัวอักษร */
-    color: #333; /* สีของตัวอักษร */
+    color: #000000; /* สีของตัวอักษร */
     margin-bottom: 20px; /* เว้นระยะห่างด้านล่างของหัวข้อ */
     font-weight: bold;
 }
@@ -624,7 +743,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #f0f0f0d4;
+    background-color: #ffffff;
     border-radius: 10px;
     padding: 20px;
     width: 80%;
@@ -654,7 +773,7 @@ video {
 }
 .pdf-downloads h2 {
     font-size: 2em;
-    color: #333;
+    color: #000000;
     font-weight: bold;
     margin-bottom: 10px;
 }
@@ -694,17 +813,18 @@ video {
 .contact-info {
     text-align: left;
     font-size: 1.2em;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     padding: 20px;
     background-color: #f9f9f9; /* พื้นหลังเบาๆ */
     border: 2px solid #ddd; /* ขอบกรอบ */
     border-radius: 10px; /* มุมโค้ง */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* เงาเล็กน้อย */
+    margin-top: 40px;
 }
 
 .contact-info h2 {
     font-size: 2em;
-    color: #333;
+    color: #000000;
     margin-bottom: 15px;
 }
 
