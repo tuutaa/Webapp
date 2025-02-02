@@ -556,7 +556,7 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: linear-gradient(90deg, #90ffd3, #30eb8e);
+    background: linear-gradient(160deg, #90d4ff, #60ff9a);
     margin-top: 60px;
 }
 
@@ -572,7 +572,7 @@ body {
 
 .nursing-low-risk-content h1 {
     font-size: 36px;
-    color: #03c113;
+    color: #000000;
     margin-bottom: 20px;
 }
 
@@ -581,7 +581,7 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: linear-gradient(90deg, #ffbb90, #eb5930);
+    background: linear-gradient(160deg, #90d4ff, #ff744e);
     margin-top: 60px;
 }
 
@@ -597,7 +597,7 @@ body {
 
 .nursing-high-risk-content h1 {
     font-size: 36px;
-    color: #ff1e1e;
+    color: #000000;
     margin-bottom: 20px;
 }
 
