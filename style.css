@@ -255,7 +255,7 @@ body {
 .overlay-text2 {
     font-size: 20px;
     font-weight: bold;
-    color: #000000;
+    color: #333;
     margin: 10px 0;
 }
 
@@ -304,11 +304,11 @@ body {
 }
 
 .new-textbox {
-    width: 550px;
+    width: 650px;
     height: 150px;
     background: #ffffff;
     position: absolute;
-    left: 15%;
+    left: 10%;
     top: 500px;
     display: flex;
     flex-direction: column;
@@ -320,9 +320,28 @@ body {
 
 .textbox-content {
     font-size: 18px;
-    font-weight: bold;
-    color: #333;
+    color: #000000;
     margin: 5px 0;
+}
+
+.textbox-content-head {
+    font-size: 30px;
+    font-weight: bold;
+    color: #000000;
+    margin: 5px 0;
+}
+
+.image-box-textbox {
+    width: 100px;
+    height: 100px;
+    background: #fff;
+    position: absolute;
+    left: 12%;
+    top: 420px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
 }
 
 .image-box-below-textbox1 {
@@ -330,7 +349,7 @@ body {
     height: 100px;
     background: #fff;
     position: absolute;
-    left: 10%;
+    left: 12%;
     top: 930px;
     display: flex;
     justify-content: center;
@@ -343,7 +362,7 @@ body {
     height: 100px;
     background: #fff;
     position: absolute;
-    left: 20%;
+    left: 22%;
     top: 930px;
     display: flex;
     justify-content: center;
@@ -356,7 +375,7 @@ body {
     height: 100px;
     background: #fff;
     position: absolute;
-    left: 30%;
+    left: 32%;
     top: 930px;
     display: flex;
     justify-content: center;
